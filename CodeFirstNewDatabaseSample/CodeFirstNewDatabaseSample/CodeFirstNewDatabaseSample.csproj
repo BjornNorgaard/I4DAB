@@ -68,6 +68,14 @@
     <Compile Include="Migrations\201602111213064_ChangeDisplayName.Designer.cs">
       <DependentUpon>201602111213064_ChangeDisplayName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602111242004_Organization.cs" />
+    <Compile Include="Migrations\201602111242004_Organization.Designer.cs">
+      <DependentUpon>201602111242004_Organization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602111359178_OrganizationNStuff.cs" />
+    <Compile Include="Migrations\201602111359178_OrganizationNStuff.Designer.cs">
+      <DependentUpon>201602111359178_OrganizationNStuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +96,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602111213064_ChangeDisplayName.resx">
       <DependentUpon>201602111213064_ChangeDisplayName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602111242004_Organization.resx">
+      <DependentUpon>201602111242004_Organization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602111359178_OrganizationNStuff.resx">
+      <DependentUpon>201602111359178_OrganizationNStuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
