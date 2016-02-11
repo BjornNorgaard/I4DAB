@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{209E1342-E1EF-4261-9950-1D0C54B01C43}</ProjectGuid>
+    <ProjectGuid>{6CB71B1B-25C5-455C-9B70-D4F884F17400}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CodeFirstNewDatabaseSample</RootNamespace>
@@ -52,12 +52,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201602101156534_InitialCreate.cs" />
+    <Compile Include="Migrations\201602101156534_InitialCreate.Designer.cs">
+      <DependentUpon>201602101156534_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602111203155_AddUrl.cs" />
+    <Compile Include="Migrations\201602111203155_AddUrl.Designer.cs">
+      <DependentUpon>201602111203155_AddUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602111209269_AddUser.cs" />
+    <Compile Include="Migrations\201602111209269_AddUser.Designer.cs">
+      <DependentUpon>201602111209269_AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602111213064_ChangeDisplayName.cs" />
+    <Compile Include="Migrations\201602111213064_ChangeDisplayName.Designer.cs">
+      <DependentUpon>201602111213064_ChangeDisplayName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602101156534_InitialCreate.resx">
+      <DependentUpon>201602101156534_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602111203155_AddUrl.resx">
+      <DependentUpon>201602111203155_AddUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602111209269_AddUser.resx">
+      <DependentUpon>201602111209269_AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602111213064_ChangeDisplayName.resx">
+      <DependentUpon>201602111213064_ChangeDisplayName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

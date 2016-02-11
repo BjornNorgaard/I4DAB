@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CodeFirstNewDatabaseSample")]
+[assembly: AssemblyTitle("RusselSkema")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CodeFirstNewDatabaseSample")]
+[assembly: AssemblyProduct("RusselSkema")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6cb71b1b-25c5-455c-9b70-d4f884f17400")]
+[assembly: Guid("e1e6d4d8-af83-4b4d-ad15-426ab4adbe37")]
 
 // Version information for an assembly consists of the following four values:
 //
