@@ -15,23 +15,23 @@ namespace CodeFirstNewDatabaseSample
                 #region Creating new organization
 
                 // Create and save new organization
-                Console.WriteLine("Enter name for a new organization: ");
-                string nameOrg = Console.ReadLine();
+                Console.Write("Enter name for a new organization: ");
+                var nameOrg = Console.ReadLine();
 
-                Organization organization = new Organization { Name = nameOrg };
+                var organization = new Organization { Name = nameOrg };
                 db.Organizations.Add(organization);
-                //db.SaveChanges(); // may not be needed, when saved later?
+                db.SaveChanges(); // may not be needed, when saved later?
 
                 #endregion
 
                 #region Creating new user with association to previous org
 
-                Console.WriteLine("Enter name for new user: ");
-                string nameUser = Console.ReadLine();
-                
-                User user = new User { DisplayName = nameUser, OrganizationId = 0};
+                Console.Write("Enter name for new user: ");
+                var nameUser = Console.ReadLine();
 
+                var user = new User { Username = nameUser, Organization = organization };
                 db.Users.Add(user);
+                db.SaveChanges();
 
                 #endregion
 
@@ -39,14 +39,13 @@ namespace CodeFirstNewDatabaseSample
 
                 // Create and save new blog
                 Console.Write("Enter a name for a new Blog: ");
-                string nameBlog = Console.ReadLine();
+                var nameBlog = Console.ReadLine();
 
-                Blog blog = new Blog { Name = nameBlog };
+                var blog = new Blog { Name = nameBlog };
                 db.Blogs.Add(blog);
+                db.SaveChanges();
 
                 #endregion
-
-                db.SaveChanges();
 
                 #region Print all Blogs in db
 
@@ -63,17 +62,16 @@ namespace CodeFirstNewDatabaseSample
 
                 #endregion
 
-                #region Print all Orgs in db
+                #region Print all users and org association
 
-                // Display all Organizations from the db
-                var organizatinoQuery = from o in db.Organizations
-                                        orderby o.Name
-                                        select o;
+                var query = from u in db.Users
+                            orderby u.Username
+                            select u;
 
-                Console.WriteLine("All Organizations in the db:");
-                foreach (var organization1 in organizatinoQuery)
+                Console.WriteLine("Printing all users with Org association:");
+                foreach (var item in query)
                 {
-                    Console.WriteLine(organization1.Name);
+                    Console.WriteLine($"Username: {item.Username} is associated with Org: {item.Organization.Name}.");
                 }
 
                 #endregion
@@ -119,7 +117,6 @@ namespace CodeFirstNewDatabaseSample
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>()
                 .Property(u => u.DisplayName)
                 .HasColumnName("display_name");
@@ -131,8 +128,6 @@ namespace CodeFirstNewDatabaseSample
         [Key]
         public string Username { get; set; }
         public string DisplayName { get; set; }
-
-        public int OrganizationId { get; set; }
         public virtual Organization Organization { get; set; }
     }
 
@@ -140,7 +135,5 @@ namespace CodeFirstNewDatabaseSample
     {
         public int OrganizationId { get; set; }
         public string Name { get; set; }
-
-        public virtual List<User> Users { get; set; }
     }
 }
