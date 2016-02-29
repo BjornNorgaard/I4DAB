@@ -1,9 +1,0 @@
-Use Casen/Applikationen vi skal arbejde ud fra er simpel: Den går ud på, at håndtere et lille kartotek over personer, og husk vi ser kun på databasesiden i denne opgave.
-
-Kartoteket skal indeholde disse oplysninger for hver person:
-Personens  fornavn, mellemnavn og efternavn samt typen af person f.eks. familie, ven, arbejdeskollega etc.
-Et eller flere telefonnumre til personen, samt oplysninger om telefonens brug eks privat, arbejde eller mobil.
-Adresseoplysninger: vejnavn og husnummer, postnummer og bynavn på mindst personens folkeregisteradresse, 
-men der skal være mulighed for yderligere adresser eks. arbejde, sommerhus o. lign. 
-Typen af adresse skal også kunne gemmes i kartoteket.
-En adresse kan deles af flere personer!
