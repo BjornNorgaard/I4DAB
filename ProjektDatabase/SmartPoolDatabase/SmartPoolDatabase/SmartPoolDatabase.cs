@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 
 namespace SmartPoolDatabase
 {
-    public class SmartPoolDatabase : DbContext
-    {
-        public DbSet<User> Users { get; set; }
-    }
-
     public class User
     {
+        [Key]
         public int UserId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -44,6 +41,19 @@ namespace SmartPoolDatabase
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                // oijoij 
+
+                var query = from u in db.Users
+                            orderby u.Name
+                            select u;
+
+                Console.WriteLine("**** USERS IN DATABASE *****");
+                foreach (User u in query)
+                {
+                    Console.WriteLine("\t" + u.Name);
+                }
+
             }
 
             return 0;
@@ -51,18 +61,23 @@ namespace SmartPoolDatabase
 
         public void PrintUsersInDatabase()
         {
-            using (var db = new SmartPoolDatabase())
-            {
-                var query = from u in db.Users
-                            orderby u.Name
-                            select u;
+            //using (var db = new SmartPoolDatabase())
+            //{
+            //    var query = from u in db.Users
+            //                orderby u.Name
+            //                select u;
 
-                Console.WriteLine("**** USERS IN DATABASE *****");
-                foreach (User user in query)
-                {
-                    Console.WriteLine("\t" + user.Name);
-                }
-            }
+            //    Console.WriteLine("**** USERS IN DATABASE *****");
+            //    foreach (User user in query)
+            //    {
+            //        Console.WriteLine("\t" + user.Name);
+            //    }
+            //}
         }
+    }
+
+    public class SmartPoolDatabase : DbContext
+    {
+        public DbSet<User> Users { get; set; }
     }
 }

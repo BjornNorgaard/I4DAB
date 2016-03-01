@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SmartPoolDatabase;
 
 namespace Database.Application
@@ -16,6 +12,8 @@ namespace Database.Application
 
             databaseAccess.InsertUserIntoDatabase(Nors);
             databaseAccess.PrintUsersInDatabase();
+
+            Console.WriteLine("Done");
         }
     }
 }
