@@ -13,10 +13,10 @@ namespace DBEntities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Model1Container : DbContext
+    public partial class SPEntityModelContainer : DbContext
     {
-        public Model1Container()
-            : base("name=Model1Container")
+        public SPEntityModelContainer()
+            : base("name=SPEntityModelContainer")
         {
         }
     
@@ -27,7 +27,5 @@ namespace DBEntities
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Name> Names { get; set; }
-        public virtual DbSet<Pool> Pools { get; set; }
-        public virtual DbSet<MonitorUnit> MonitorUnits { get; set; }
     }
 }
