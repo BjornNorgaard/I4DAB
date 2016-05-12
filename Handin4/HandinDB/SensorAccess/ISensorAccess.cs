@@ -7,6 +7,6 @@ namespace Handin
 {
     public interface ISensorAccess
     {
-        bool AddData(int sensorId, int appartmentId, double value, string timestamp);
+        bool AddData(int sensorId, int apartmentId, double value, string timestamp);
     }
 }
