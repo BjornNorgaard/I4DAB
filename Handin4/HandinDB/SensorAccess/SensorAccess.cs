@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using HandinDB;
 
 namespace Handin
 {
@@ -43,7 +45,17 @@ namespace Handin
 
         private bool SensorExists(int sensorId)
         {
-            throw new NotImplementedException();
+            using (var db = new HandinContext())
+            {
+                var searchSensor = from sensor in db.Sensors
+                                   where sensor.SensorId == sensorId
+                                   select sensor;
+
+                if (searchSensor.Count() < 1) return false;
+                if (searchSensor.Count() > 1) throw new ArgumentException("Herro pree, more than one sensor was found!");
+            }
+
+            return true;
         }
     }
 }
