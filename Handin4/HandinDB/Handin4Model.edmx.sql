@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/12/2016 13:48:37
+-- Date Created: 05/12/2016 13:52:20
 -- Generated from EDMX file: C:\Users\Norgaard\Documents\Git\I4DAB\Handin4\HandinDB\Handin4Model.edmx
 -- --------------------------------------------------
 
@@ -17,6 +17,9 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_SensorMesurement]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Mesurements] DROP CONSTRAINT [FK_SensorMesurement];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -24,6 +27,9 @@ GO
 
 IF OBJECT_ID(N'[dbo].[Sensors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Sensors];
+GO
+IF OBJECT_ID(N'[dbo].[Mesurements]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Mesurements];
 GO
 
 -- --------------------------------------------------
@@ -34,14 +40,14 @@ GO
 CREATE TABLE [dbo].[Sensors] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [AppartmentId] int  NOT NULL,
-    [SensorId] nvarchar(max)  NOT NULL
+    [SensorId] int  NOT NULL
 );
 GO
 
 -- Creating table 'Mesurements'
 CREATE TABLE [dbo].[Mesurements] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Value] nvarchar(max)  NOT NULL,
+    [Value] float  NOT NULL,
     [Timestamp] nvarchar(max)  NOT NULL,
     [SensorId] int  NOT NULL
 );

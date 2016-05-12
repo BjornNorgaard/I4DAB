@@ -19,14 +19,14 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AppartmentId" Type="int" Nullable="false" />
-    <Property Name="SensorId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SensorId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Mesurements">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
     <Property Name="Timestamp" Type="nvarchar(max)" Nullable="false" />
     <Property Name="SensorId" Type="int" Nullable="false" />
   </EntityType>
