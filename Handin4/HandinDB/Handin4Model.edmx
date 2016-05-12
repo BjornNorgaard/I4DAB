@@ -7,34 +7,84 @@
     <Schema Namespace="Handin4Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="Handin4ModelStoreContainer">
     <EntitySet Name="Sensors" EntityType="Handin4Model.Store.Sensors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Mesurements" EntityType="Handin4Model.Store.Mesurements" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="SensorMesurement" Association="Handin4Model.Store.SensorMesurement">
+      <End Role="Sensor" EntitySet="Sensors" />
+      <End Role="Mesurement" EntitySet="Mesurements" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Sensors">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="sensorId" Type="int" Nullable="false" />
-    <Property Name="appartmentId" Type="int" Nullable="false" />
-    <Property Name="value" Type="float" Nullable="false" />
-    <Property Name="timestamp" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AppartmentId" Type="int" Nullable="false" />
+    <Property Name="SensorId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Mesurements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
+    <Property Name="Timestamp" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SensorId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="SensorMesurement">
+    <End Role="Sensor" Type="Handin4Model.Store.Sensors" Multiplicity="1" />
+    <End Role="Mesurement" Type="Handin4Model.Store.Mesurements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sensor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mesurement">
+        <PropertyRef Name="SensorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Handin4Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Handin4ModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Sensors" EntityType="Handin4Model.Sensor" />
+          <EntitySet Name="Mesurements" EntityType="Handin4Model.Mesurement" />
+          <AssociationSet Name="SensorMesurement" Association="Handin4Model.SensorMesurement">
+            <End Role="Sensor" EntitySet="Sensors" />
+            <End Role="Mesurement" EntitySet="Mesurements" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Sensor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="sensorId" Type="Int32" Nullable="false" />
-          <Property Name="appartmentId" Type="Int32" Nullable="false" />
-          <Property Name="value" Type="Double" Nullable="false" />
-          <Property Name="timestamp" Type="String" Nullable="false" />
+          <Property Name="AppartmentId" Type="Int32" Nullable="false" />
+          <Property Name="SensorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mesurements" Relationship="Handin4Model.SensorMesurement" FromRole="Sensor" ToRole="Mesurement" />
         </EntityType>
+        <EntityType Name="Mesurement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="Timestamp" Type="String" Nullable="false" />
+          <NavigationProperty Name="Sensor" Relationship="Handin4Model.SensorMesurement" FromRole="Mesurement" ToRole="Sensor" />
+          <Property Name="SensorId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="SensorMesurement">
+          <End Type="Handin4Model.Sensor" Role="Sensor" Multiplicity="1" />
+          <End Type="Handin4Model.Mesurement" Role="Mesurement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mesurement">
+              <PropertyRef Name="SensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -45,10 +95,18 @@
       <EntityTypeMapping TypeName="IsTypeOf(Handin4Model.Sensor)">
         <MappingFragment StoreEntitySet="Sensors">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="sensorId" ColumnName="sensorId" />
-          <ScalarProperty Name="appartmentId" ColumnName="appartmentId" />
-          <ScalarProperty Name="value" ColumnName="value" />
-          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="AppartmentId" ColumnName="AppartmentId" />
+          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mesurements">
+      <EntityTypeMapping TypeName="IsTypeOf(Handin4Model.Mesurement)">
+        <MappingFragment StoreEntitySet="Mesurements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -70,11 +70,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Handin4Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Mesurement.cs">
+      <DependentUpon>Handin4Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sensor.cs">
       <DependentUpon>Handin4Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="SensorAccess.cs" />
+    <Compile Include="SensorAccess\ISensorAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SensorAccess\SensorAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Handin4Model.edmx">
