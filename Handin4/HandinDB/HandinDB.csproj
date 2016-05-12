@@ -72,8 +72,9 @@
     <Compile Include="Sensor.cs">
       <DependentUpon>Handin4Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ISensorAccess.cs" />
+    <Compile Include="SensorAccess\ISensorAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SensorAccess\SensorAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Handin4Model.edmx">
