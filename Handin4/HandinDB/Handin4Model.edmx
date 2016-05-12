@@ -60,7 +60,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AppartmentId" Type="Int32" Nullable="false" />
-          <Property Name="SensorId" Type="String" Nullable="false" />
+          <Property Name="SensorId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Mesurements" Relationship="Handin4Model.SensorMesurement" FromRole="Sensor" ToRole="Mesurement" />
         </EntityType>
         <EntityType Name="Mesurement">
@@ -68,7 +68,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
           <Property Name="Timestamp" Type="String" Nullable="false" />
           <NavigationProperty Name="Sensor" Relationship="Handin4Model.SensorMesurement" FromRole="Mesurement" ToRole="Sensor" />
           <Property Name="SensorId" Type="Int32" Nullable="false" />

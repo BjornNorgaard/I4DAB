@@ -22,7 +22,7 @@ namespace HandinDB
     
         public int Id { get; set; }
         public int AppartmentId { get; set; }
-        public string SensorId { get; set; }
+        public int SensorId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mesurement> Mesurements { get; set; }

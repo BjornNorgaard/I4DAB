@@ -8,6 +8,6 @@ namespace Handin
 {
     public interface ISensorAccess
     {
-
+        void method()
     }
 }
