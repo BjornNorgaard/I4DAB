@@ -12,19 +12,13 @@ namespace HandinDB
     using System;
     using System.Collections.Generic;
     
-    public partial class Sensor
+    public partial class Mesurement
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sensor()
-        {
-            this.Mesurements = new HashSet<Mesurement>();
-        }
-    
         public int Id { get; set; }
-        public int AppartmentId { get; set; }
-        public string SensorId { get; set; }
+        public string Value { get; set; }
+        public string Timestamp { get; set; }
+        public int SensorId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mesurement> Mesurements { get; set; }
+        public virtual Sensor Sensor { get; set; }
     }
 }

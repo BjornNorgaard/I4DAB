@@ -26,5 +26,6 @@ namespace HandinDB
         }
     
         public virtual DbSet<Sensor> Sensors { get; set; }
+        public virtual DbSet<Mesurement> Mesurements { get; set; }
     }
 }
