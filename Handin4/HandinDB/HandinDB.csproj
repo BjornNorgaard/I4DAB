@@ -66,10 +66,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Handin4Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Mesurement.cs">
+      <DependentUpon>Handin4Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Sensor.cs">
       <DependentUpon>Handin4Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="SensorAccess.cs" />
+    <Compile Include="ISensorAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

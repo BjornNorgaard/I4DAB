@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Handin
 {
-    public interface SensorAccess
+    public interface ISensorAccess
     {
 
     }
