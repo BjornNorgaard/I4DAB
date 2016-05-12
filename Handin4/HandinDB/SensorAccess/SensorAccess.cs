@@ -8,14 +8,9 @@ namespace Handin
     {
         public bool AddData(int sensorId, int apartmentId, double value, string timestamp)
         {
-            if (SensorExists(sensorId))
+            if (SensorExists(sensorId, apartmentId))
             {
-                if (CreateSensorInDb(sensorId) == false) return false;
-            }
-
-            if (ApartmentExists(apartmentId))
-            {
-                if (CreateApartmentInDb(apartmentId) == false) return false;
+                if (CreateSensorInDb(sensorId, apartmentId) == false) return false;
             }
 
             if (CreateMesurement(sensorId, apartmentId, value, timestamp) == false) return false;
@@ -25,30 +20,38 @@ namespace Handin
 
         private bool CreateMesurement(int sensorId, int apartmentId, double value, string timestamp)
         {
-            throw new NotImplementedException();
-        }
+            if (SensorExists(sensorId, apartmentId) == false) return false;
 
-        private bool CreateApartmentInDb(int apartmentId)
+            Mesurement mesurement = new Mesurement() {SensorId = sensorId, Timestamp = timestamp, Value = value};
+
+            using (var db = new HandinContext())
+            {
+                db.Mesurements.Add(mesurement);
+            }
+
+            return true;
+        }
+        
+        private bool CreateSensorInDb(int sensorId, int apartmentId)
         {
-            throw new NotImplementedException();
+            if (SensorExists(sensorId, apartmentId) == true) return false;
+
+            Sensor sensor = new Sensor() {SensorId = sensorId, AppartmentId = apartmentId};
+
+            using (var db = new HandinContext())
+            {
+                db.Sensors.Add(sensor);
+            }
+
+            return true;
         }
 
-        private bool ApartmentExists(int apartmentId)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool CreateSensorInDb(int sensorId)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool SensorExists(int sensorId)
+        private bool SensorExists(int sensorId, int apartmentId)
         {
             using (var db = new HandinContext())
             {
                 var searchSensor = from sensor in db.Sensors
-                                   where sensor.SensorId == sensorId
+                                   where sensor.SensorId == sensorId && sensor.AppartmentId == apartmentId
                                    select sensor;
 
                 if (searchSensor.Count() < 1) return false;
