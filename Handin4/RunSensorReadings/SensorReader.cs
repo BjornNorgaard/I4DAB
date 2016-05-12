@@ -13,8 +13,11 @@ namespace HandinDB
         
         public SensorReader()
         {
-            SaveReadingsToDatabase();
-            Thread.Sleep(5000);
+            for (int i = 0; i < 50; i++)
+            {
+                SaveReadingsToDatabase();
+                Thread.Sleep(5000);
+            }
         }
 
         private void SaveReadingsToDatabase()
@@ -25,7 +28,7 @@ namespace HandinDB
             {
                 //insert to database
                 //sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp);
-                System.Console.WriteLine("inserted to database: " + sensor.SensorId +  sensor.AppartmentId, sensor.Value, sensor.Timestamp);
+                System.Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
                 totalInsertions++;
             }
             System.Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
