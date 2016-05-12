@@ -10,7 +10,7 @@ namespace HandinDB
     {
         private int CurrentFile = 0;
         private ISensorAccess sensorAccess = new SensorAccess();
-        
+
         public SensorReader()
         {
             for (int i = 0; i < 50; i++)
@@ -27,7 +27,7 @@ namespace HandinDB
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                //sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp);
+                sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp);
                 System.Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
                 totalInsertions++;
             }
@@ -39,7 +39,7 @@ namespace HandinDB
         {
             var sensorList = new List<GDLSensor>();
             var stringArray = jsonFile.Split('{', '}');
-            
+
             for (int i = 2; i < stringArray.Length - 1; i += 2)
             {
                 sensorList.Add(JsonConvert.DeserializeObject<GDLSensor>('{' + stringArray[i] + '}'));
@@ -50,7 +50,7 @@ namespace HandinDB
         public string ReadFile()
         {
             CurrentFile++;
-            return System.IO.File.ReadAllText(@"json/" +CurrentFile+ ".json");
+            return System.IO.File.ReadAllText(@"json/" + CurrentFile + ".json");
         }
     }
 }
