@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Threading;
 using Handin;
 using Newtonsoft.Json;
@@ -8,12 +11,13 @@ namespace HandinDB
 {
     public class SensorReader
     {
-        private int CurrentFile = 0;
+        private int CurrentFile = 1;
         private ISensorAccess sensorAccess = new SensorAccess();
+        private readonly WebClient _webClient = new WebClient();
 
         public SensorReader()
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 11800; i++)
             {
                 SaveReadingsToDatabase();
                 Thread.Sleep(5000);
@@ -27,30 +31,30 @@ namespace HandinDB
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp);
-                System.Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
+                //sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp);
+                Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
                 totalInsertions++;
             }
-            System.Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
+            Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
         }
 
 
         private List<GDLSensor> ConvertFileToSensorList(string jsonFile)
         {
-            var sensorList = new List<GDLSensor>();
+            var tempSensorList = new List<GDLSensor>();
             var stringArray = jsonFile.Split('{', '}');
 
             for (int i = 2; i < stringArray.Length - 1; i += 2)
             {
-                sensorList.Add(JsonConvert.DeserializeObject<GDLSensor>('{' + stringArray[i] + '}'));
+                tempSensorList.Add(JsonConvert.DeserializeObject<GDLSensor>('{' + stringArray[i] + '}'));
             }
-            return sensorList;
+            return tempSensorList;
         }
 
         public string ReadFile()
         {
-            CurrentFile++;
-            return System.IO.File.ReadAllText(@"json/" + CurrentFile + ".json");
+            return _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" + CurrentFile++ +
+                                  ".json");
         }
     }
 }
