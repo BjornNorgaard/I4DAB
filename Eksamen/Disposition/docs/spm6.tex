@@ -7,8 +7,8 @@
 	\item Hvad er Relationel Algebra (RA)?
 	\begin{itemize}
 		\item Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...).
-		\item Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer.
 	\end{itemize}
+	\item Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer.
 \end{itemize}
 
 \subsection{Litteratur}
@@ -46,6 +46,18 @@
 
 % must
 \subsection{Hvad er Relationel Algebra (RA)?}
+
+\textit{"There must be a set of rules which state how the database system will behave. For instance, somewhere in the DBMS\footnote{Database management system.} must be a set of statements which indicate, when someone inserts data into a relation, it has the effect which is expected. One way to specify this is to write an `essay' as to how the DBMS will operate, but words are imprecise and open to interpretation. Instead, relational databases are usually defined using Relational Algebra."}
+
+Med andre ord så er RA: 
+
+\begin{itemize}
+	\item The formal description of how a relational database operates.
+	\item An interface to the data stored in the database itself.
+	\item The mathematics which underpin SQL operations.
+\end{itemize}
+
+Videre så forklare teksten: \textit{"Operators in relational algebra are not the same as SQL operators, even if they have the same name. For example, the SELECT statement exists in SQL, and in RA. These two uses of SELECT are not the same. The DBMS takes whatever SQL statements the user types and translate them into RA operations before applying them to the database."}
 
 % must
 \subsubsection{Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...)}
