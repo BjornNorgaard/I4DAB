@@ -24,7 +24,7 @@ namespace Handin
 
             Mesurement mesurement = new Mesurement() {SensorId = sensorId, Timestamp = timestamp, Value = value};
 
-            using (var db = new HandinContext())
+            using (var db = new Handin4ModelContainer())
             {
                 db.Mesurements.Add(mesurement);
             }
@@ -38,7 +38,7 @@ namespace Handin
 
             Sensor sensor = new Sensor() {SensorId = sensorId, AppartmentId = apartmentId};
 
-            using (var db = new HandinContext())
+            using (var db = new Handin4ModelContainer())
             {
                 db.Sensors.Add(sensor);
             }
@@ -48,7 +48,7 @@ namespace Handin
 
         private bool SensorExists(int sensorId, int apartmentId)
         {
-            using (var db = new HandinContext())
+            using (var db = new Handin4ModelContainer())
             {
                 var searchSensor = from sensor in db.Sensors
                                    where sensor.SensorId == sensorId && sensor.AppartmentId == apartmentId
