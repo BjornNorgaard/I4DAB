@@ -7,8 +7,8 @@
 	\item Hvad er Relationel Algebra (RA)?
 	\begin{itemize}
 		\item Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...).
-		\item Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer.
 	\end{itemize}
+	\item Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer.
 \end{itemize}
 
 \subsection{Litteratur}
@@ -47,8 +47,179 @@
 % must
 \subsection{Hvad er Relationel Algebra (RA)?}
 
-% must
-\subsubsection{Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...)}
+\textit{"There must be a set of rules which state how the database system will behave. For instance, somewhere in the DBMS\footnote{Database management system.} must be a set of statements which indicate, when someone inserts data into a relation, it has the effect which is expected. One way to specify this is to write an `essay' as to how the DBMS will operate, but words are imprecise and open to interpretation. Instead, relational databases are usually defined using Relational Algebra."}\\
+
+Med andre ord så er RA \textbf{en entydig måde at beskrive en database's opførsel}: 
+
+\begin{itemize}
+	\item The formal description of how a relational database operates.
+	\item An interface to the data stored in the database itself.
+	\item The mathematics which underpin SQL operations.
+\end{itemize}
+
+Videre så forklare teksten: \textit{"Operators in relational algebra are not the same as SQL operators, even if they have the same name. For example, the SELECT statement exists in SQL, and in RA. These two uses of SELECT are not the same. The DBMS takes whatever SQL statements the user types and translate them into RA operations before applying them to the database."}\\
+
+Videoerne i nedstående playliste var \textbf{meget} brugbare:\\
+\textit{Relational Algebra 1 - Select and Project Operators}:\\
+\url{https://www.youtube.com/watch?v=yVh_LcOcQdg&list=PL8A52AA7E276200C0&index=1}
 
 % must
-\subsubsection{Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer}
+\subsection{Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...)}
+
+\subsubsection{Relation}
+Et set af tupler.
+
+\subsubsection{Tuple}
+En samling af attributter som beskriver \textit{"some real world entity"}.
+
+\subsubsection{Set}
+
+Er en binær operatore, som har nogle bestemt betingelser for at kunne anvendes:
+
+\begin{itemize}
+	\item Relationerne (tabellerne) skal have samme antal kolonner.
+	\item Domænerne skal være ens (kolonnerne skal indeholde de samme slags data).
+\end{itemize}
+
+\subsubsection{Operatorer Terminologi}
+
+Et udtryk vil være på denne form:
+
+\begin{equation*}
+operator_{betingelse} \text{ and } _{betingelse} (\text{i tabel})
+\end{equation*}
+
+Til beskrivelse af div. operatorer bruger vi følgende tabel:
+
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{center}
+	\begin{tabular}{l}\label{tab:stud}
+		\textbf{\large Studerende}	\\
+		\begin{tabular}{|l|c|c|l|}		
+			\hline
+			\textbf{Navn}&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
+			\hline
+			John Derp	& 24 & 7,7	& john@derp.me		\\
+			\hline
+			Hans Hansen	& 45 & 9,8	& hans@landmand.dk		\\
+			\hline
+			Brian Jensen& 22 & 4,5	& brian@randers.dk		\\
+			\hline
+			Signe Andersen	& 25 & 8,6	& signe@hotmail.com		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
+
+\subsubsection{Select $\sigma$}
+
+\url{https://en.wikipedia.org/wiki/Selection_(relational_algebra)}\\
+
+Laver en \textit{horizontal partition} af en tabel og finde hele rækker som opfylder en eller flere betingelser.
+Nu kan vi så bruge et \textbf{\textit{select}} statement til at finde alle studerende som har alder over 23, og gennemsnit over 8.
+
+Med relationel algebra vil dette se således ud:
+
+\begin{equation*}
+\sigma_{alder \geq 23}\text{ and } _{gennemsnit \geq 8} (\text{Studerende})
+\end{equation*}
+
+Dette vil så returnere følgende tabel:
+
+\begin{center}
+	\begin{tabular}{l}
+		\textbf{\large Studerende ændre end 23 med snit over 8}	\\
+		\begin{tabular}{|l|c|c|l|}
+			\hline
+			\textbf{Navn}&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
+			\hline
+			Hans Hansen	& 45 & 9,8	& hans@landmand.dk		\\
+			\hline
+			Signe Andersen	& 25 & 8,6	& signe@hotmail.com		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
+
+På denne måde laver \textbf{\textit{select}} operatoren en \textit{horizontal partition} med to dele: én der opfylder betingelserne og én som ikke gør.
+
+\subsubsection{Project $\pi$}
+
+\url{https://en.wikipedia.org/wiki/Projection_(relational_algebra)}\\
+
+Denne operator bruges til at lave en \textit{vertical partitionering} og giver os kun de kolonner som vi er interesserede i. Eksempelvis, hvis vi kun er interessede i navn og email for alle i tabellen på side~\pageref{tab:stud}, kan vi skrive følgende med RA:
+
+\begin{equation}
+\pi_{navn, email}(Studerende)
+\end{equation}
+
+Hvilket så vil give os følgende tabel:
+
+\begin{center}
+	\begin{tabular}{l}\label{tab:stud}
+		\textbf{\large Studerendes navn og email}	\\
+		\begin{tabular}{|l|l|}		
+			\hline
+			\textbf{Navn}&\textbf{Email}\\
+			\hline
+			John Derp		&  john@derp.me		\\
+			\hline
+			Hans Hansen		&  hans@landmand.dk		\\
+			\hline
+			Brian Jensen	&  brian@randers.dk		\\
+			\hline
+			Signe Andersen	& signe@hotmail.com		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
+
+\subsubsection{Kombination af Project $\pi$ og Select $\sigma$}
+
+Disse operatorer kan også anvendes samtidigt og bruges her til at finde navn og email for studerende, som har et gennemsnit over 7.
+
+\begin{equation}
+\pi_{navn, email}\sigma_{gennemsnit>7}(Studerende)
+\end{equation}
+
+Dette ville så give os følgende tabel:
+
+\begin{center}
+	\begin{tabular}{l}\label{tab:stud}
+		\textbf{\large Stud: navn, email \& snit $>$ 7}	\\
+		\begin{tabular}{|l|l|}		
+			\hline
+			\textbf{Navn}&\textbf{Email}\\
+			\hline
+			John Derp		&  john@derp.me		\\
+			\hline
+			Hans Hansen		&  hans@landmand.dk		\\
+			\hline
+			Signe Andersen	& signe@hotmail.com		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
+
+% must
+%\subsubsection{Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
