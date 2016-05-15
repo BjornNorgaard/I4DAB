@@ -20,7 +20,7 @@ namespace HandinDB
             for (int i = 0; i < 11800; i++)
             {
                 SaveReadingsToDatabase();
-                Thread.Sleep(5);
+                Thread.Sleep(5000);
             }
         }
 

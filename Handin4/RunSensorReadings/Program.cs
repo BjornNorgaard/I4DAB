@@ -13,10 +13,11 @@ namespace RunSensorReadings
         {
             var sensorReader = new SensorReader();
 
-            //using (var db = new Handin4ModelContainer())
-            //{
-            //    db.Database.ExecuteSqlCommand("DELETE [Sensors]");
-            //}
+            using (var db = new Handin4ModelContainer())
+            {
+                db.Database.ExecuteSqlCommand("DELETE [Mesurements]");
+                db.Database.ExecuteSqlCommand("delete [sensors]");
+            }
         }
     }
 }
