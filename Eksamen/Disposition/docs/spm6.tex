@@ -57,7 +57,11 @@ Med andre ord så er RA \textbf{en entydig måde at beskrive en database's opfø
 	\item The mathematics which underpin SQL operations.
 \end{itemize}
 
-Videre så forklare teksten: \textit{"Operators in relational algebra are not the same as SQL operators, even if they have the same name. For example, the SELECT statement exists in SQL, and in RA. These two uses of SELECT are not the same. The DBMS takes whatever SQL statements the user types and translate them into RA operations before applying them to the database."}
+Videre så forklare teksten: \textit{"Operators in relational algebra are not the same as SQL operators, even if they have the same name. For example, the SELECT statement exists in SQL, and in RA. These two uses of SELECT are not the same. The DBMS takes whatever SQL statements the user types and translate them into RA operations before applying them to the database."}\\
+
+Videoerne i nedstående playliste var \textbf{meget} brugbare:\\
+\textit{Relational Algebra 1 - Select and Project Operators}:\\
+\url{https://www.youtube.com/watch?v=yVh_LcOcQdg&list=PL8A52AA7E276200C0&index=1}
 
 % must
 \subsection{Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...)}
@@ -69,6 +73,13 @@ Et set af tupler.
 En samling af attributter som beskriver \textit{"some real world entity"}.
 
 \subsubsection{Set}
+
+Er en binær operatore, som har nogle bestemt betingelser for at kunne anvendes:
+
+\begin{itemize}
+	\item Relationerne (tabellerne) skal have samme antal kolonner.
+	\item Domænerne skal være ens (kolonnerne skal indeholde de samme slags data).
+\end{itemize}
 
 \subsubsection{Operatorer Terminologi}
 
@@ -102,6 +113,9 @@ Til beskrivelse af div. operatorer bruger vi følgende tabel:
 \end{center}
 
 \subsubsection{Select $\sigma$}
+
+\url{https://en.wikipedia.org/wiki/Selection_(relational_algebra)}\\
+
 Laver en \textit{horizontal partition} af en tabel og finde hele rækker som opfylder en eller flere betingelser.
 Nu kan vi så bruge et \textbf{\textit{select}} statement til at finde alle studerende som har alder over 23, og gennemsnit over 8.
 
@@ -132,6 +146,8 @@ På denne måde laver \textbf{\textit{select}} operatoren en \textit{horizontal 
 
 \subsubsection{Project $\pi$}
 
+\url{https://en.wikipedia.org/wiki/Projection_(relational_algebra)}\\
+
 Denne operator bruges til at lave en \textit{vertical partitionering} og giver os kun de kolonner som vi er interesserede i. Eksempelvis, hvis vi kun er interessede i navn og email for alle i tabellen på side~\pageref{tab:stud}, kan vi skrive følgende med RA:
 
 \begin{equation}
@@ -160,6 +176,7 @@ Hvilket så vil give os følgende tabel:
 \end{center}
 
 \subsubsection{Kombination af Project $\pi$ og Select $\sigma$}
+
 Disse operatorer kan også anvendes samtidigt og bruges her til at finde navn og email for studerende, som har et gennemsnit over 7.
 
 \begin{equation}
