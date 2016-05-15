@@ -35,7 +35,7 @@ namespace Handin
         
         private bool CreateSensorInDb(int sensorId, int apartmentId)
         {
-            if (SensorExists(sensorId, apartmentId) == true) return false;
+           // if (SensorExists(sensorId, apartmentId) == true) return false;
 
             Sensor sensor = new Sensor() {SensorId = sensorId, AppartmentId = apartmentId};
 
@@ -56,7 +56,7 @@ namespace Handin
                                    where sensor.SensorId == sensorId && sensor.AppartmentId == apartmentId
                                    select sensor;
 
-                if (searchSensor.Count() < 1) return false;
+                if (!searchSensor.Any()) return false;
                 if (searchSensor.Count() > 1) throw new ArgumentException("Herro pree, more than one sensor was found!");
             }
 
