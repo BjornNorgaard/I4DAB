@@ -70,44 +70,123 @@ En samling af attributter som beskriver \textit{"some real world entity"}.
 
 \subsubsection{Set}
 
-\subsubsection{Operatorer}
+\subsubsection{Operatorer Terminologi}
+
+Et udtryk vil være på denne form:
+
+\begin{equation*}
+operator_{betingelse} \text{ and } _{betingelse} (\text{i tabel})
+\end{equation*}
 
 Til beskrivelse af div. operatorer bruger vi følgende tabel:
 
 \setlength{\tabcolsep}{10pt}
 \renewcommand{\arraystretch}{1.2}
 \begin{center}
-	\begin{tabular}{c}
+	\begin{tabular}{l}\label{tab:stud}
 		\textbf{\large Studerende}	\\
-		\begin{tabular}{|l|l|l|l|}
+		\begin{tabular}{|l|c|c|l|}		
 			\hline
 			\textbf{Navn}&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
 			\hline
-			John Derp	& 24 & 7,7	& john@derp.dk		\\
+			John Derp	& 24 & 7,7	& john@derp.me		\\
+			\hline
+			Hans Hansen	& 45 & 9,8	& hans@landmand.dk		\\
+			\hline
+			Brian Jensen& 22 & 4,5	& brian@randers.dk		\\
+			\hline
+			Signe Andersen	& 25 & 8,6	& signe@hotmail.com		\\
 			\hline
 		\end{tabular}
 	\end{tabular}
 \end{center}
 
-%\begin{center}
-%	\begin{tabular}{c|c|c}
-%		Navn		&		Symbol				& 		Eksempel		\\
-%		\hline 
-%		Select		&		Sigma ($\sigma$)	&		Derp			\\
-%		Select		&		Sigma ($\sigma$)	&		Derp			\\
-%		Select		&		Sigma ($\sigma$)	&		Derp			\\
-%	\end{tabular}
-%\end{center}
+\subsubsection{Select $\sigma$}
+Laver en \textit{horizontal partition} af en tabel og finde hele rækker som opfylder en eller flere betingelser.
+Nu kan vi så bruge et \textbf{\textit{select}} statement til at finde alle studerende som har alder over 23, og gennemsnit over 8.
 
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=\linewidth]{figs/spm6/operators}
-%	\caption{Forskellige operatore i RA.}
-%	\label{fig:operators}
-%\end{figure}
+Med relationel algebra vil dette se således ud:
+
+\begin{equation*}
+\sigma_{alder \geq 23}\text{ and } _{gennemsnit \geq 8} (\text{Studerende})
+\end{equation*}
+
+Dette vil så returnere følgende tabel:
+
+\begin{center}
+	\begin{tabular}{l}
+		\textbf{\large Studerende ændre end 23 med snit over 8}	\\
+		\begin{tabular}{|l|c|c|l|}
+			\hline
+			\textbf{Navn}&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
+			\hline
+			Hans Hansen	& 45 & 9,8	& hans@landmand.dk		\\
+			\hline
+			Signe Andersen	& 25 & 8,6	& signe@hotmail.com		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
+
+På denne måde laver \textbf{\textit{select}} operatoren en \textit{horizontal partition} med to dele: én der opfylder betingelserne og én som ikke gør.
+
+\subsubsection{Project $\pi$}
+
+Denne operator bruges til at lave en \textit{vertical partitionering} og giver os kun de kolonner som vi er interesserede i. Eksempelvis, hvis vi kun er interessede i navn og email for alle i tabellen på side~\pageref{tab:stud}, kan vi skrive følgende med RA:
+
+\begin{equation}
+\pi_{navn, email}(Studerende)
+\end{equation}
+
+Hvilket så vil give os følgende tabel:
+
+\begin{center}
+	\begin{tabular}{l}\label{tab:stud}
+		\textbf{\large Studerendes navn og email}	\\
+		\begin{tabular}{|l|l|}		
+			\hline
+			\textbf{Navn}&\textbf{Email}\\
+			\hline
+			John Derp		&  john@derp.me		\\
+			\hline
+			Hans Hansen		&  hans@landmand.dk		\\
+			\hline
+			Brian Jensen	&  brian@randers.dk		\\
+			\hline
+			Signe Andersen	& signe@hotmail.com		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
+
+\subsubsection{Kombination af Project $\pi$ og Select $\sigma$}
+Disse operatorer kan også anvendes samtidigt og bruges her til at finde navn og email for studerende, som har et gennemsnit over 7.
+
+\begin{equation}
+\pi_{navn, email}\sigma_{gennemsnit>7}(Studerende)
+\end{equation}
+
+Dette ville så give os følgende tabel:
+
+\begin{center}
+	\begin{tabular}{l}\label{tab:stud}
+		\textbf{\large Stud: navn, email \& snit $>$ 7}	\\
+		\begin{tabular}{|l|l|}		
+			\hline
+			\textbf{Navn}&\textbf{Email}\\
+			\hline
+			John Derp		&  john@derp.me		\\
+			\hline
+			Hans Hansen		&  hans@landmand.dk		\\
+			\hline
+			Signe Andersen	& signe@hotmail.com		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
 
 % must
-\subsubsection{Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer}
+%\subsubsection{Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer}
 
 
 

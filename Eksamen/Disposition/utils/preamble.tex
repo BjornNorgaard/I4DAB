@@ -14,6 +14,7 @@ a4paper, % papirtype
 \usepackage{lipsum} % bogus tekst
 \usepackage{fancyhdr} % til header og footers
 \usepackage[utf8]{inputenc} % æ ø å
+\usepackage[perpage]{footmisc}	% resets footnote counter on new page
 %\usepackage{xcolor} % også til kode
 \usepackage[nodayofweek]{datetime}
 \newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
@@ -26,6 +27,7 @@ a4paper, % papirtype
 \usepackage[usenames,dvipsnames,table]{xcolor}
 \usepackage{float}
 \usepackage{tikz}
+\usepackage{color, colortbl} % row colors
 \usepackage[pages=some]{background}
 \usepackage{lastpage}
 \usepackage{tocloft} % needed for dotfill in contents
@@ -38,7 +40,7 @@ a4paper, % papirtype
 	urlcolor={blue!80!black}
 }
 
-\usepackage[bottom,perpage]{footmisc}%% nulstiller footnote counter på hver side
+%\usepackage[bottom,perpage]{footmisc}%% nulstiller footnote counter på hver side
 \usepackage{todonotes} %% tillader "to-do"-liste vha. \todo{opgave}
 \usepackage{datetime}
 \usepackage{dblfnote} %% footnotes in two colums
