@@ -8,7 +8,7 @@
   <EntityContainer Name="Handin4ModelStoreContainer">
     <EntitySet Name="Sensors" EntityType="Handin4Model.Store.Sensors" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Mesurements" EntityType="Handin4Model.Store.Mesurements" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="SensorMesurement" Association="Handin4Model.Store.SensorMesurement">
+    <AssociationSet Name="SensorMesurement1" Association="Handin4Model.Store.SensorMesurement1">
       <End Role="Sensor" EntitySet="Sensors" />
       <End Role="Mesurement" EntitySet="Mesurements" />
     </AssociationSet>
@@ -18,19 +18,18 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AppartmentId" Type="int" Nullable="false" />
-    <Property Name="SensorId" Type="int" Nullable="false" />
+    <Property Name="ApartmentId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Mesurements">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Value" Type="float" Nullable="false" />
     <Property Name="Timestamp" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
     <Property Name="SensorId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="SensorMesurement">
+  <Association Name="SensorMesurement1">
     <End Role="Sensor" Type="Handin4Model.Store.Sensors" Multiplicity="1" />
     <End Role="Mesurement" Type="Handin4Model.Store.Mesurements" Multiplicity="*" />
     <ReferentialConstraint>
@@ -49,7 +48,7 @@
         <EntityContainer Name="Handin4ModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Sensors" EntityType="Handin4Model.Sensor" />
           <EntitySet Name="Mesurements" EntityType="Handin4Model.Mesurement" />
-          <AssociationSet Name="SensorMesurement" Association="Handin4Model.SensorMesurement">
+          <AssociationSet Name="SensorMesurement1" Association="Handin4Model.SensorMesurement1">
             <End Role="Sensor" EntitySet="Sensors" />
             <End Role="Mesurement" EntitySet="Mesurements" />
           </AssociationSet>
@@ -59,21 +58,20 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AppartmentId" Type="Int32" Nullable="false" />
-          <Property Name="SensorId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Mesurements" Relationship="Handin4Model.SensorMesurement" FromRole="Sensor" ToRole="Mesurement" />
+          <Property Name="ApartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Mesurements" Relationship="Handin4Model.SensorMesurement1" FromRole="Sensor" ToRole="Mesurement" />
         </EntityType>
         <EntityType Name="Mesurement">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Value" Type="Double" Nullable="false" />
           <Property Name="Timestamp" Type="String" Nullable="false" />
-          <NavigationProperty Name="Sensor" Relationship="Handin4Model.SensorMesurement" FromRole="Mesurement" ToRole="Sensor" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Sensor" Relationship="Handin4Model.SensorMesurement1" FromRole="Mesurement" ToRole="Sensor" />
           <Property Name="SensorId" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="SensorMesurement">
+        <Association Name="SensorMesurement1">
           <End Type="Handin4Model.Sensor" Role="Sensor" Multiplicity="1" />
           <End Type="Handin4Model.Mesurement" Role="Mesurement" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,8 +93,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(Handin4Model.Sensor)">
         <MappingFragment StoreEntitySet="Sensors">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="AppartmentId" ColumnName="AppartmentId" />
-          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+          <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -104,8 +101,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(Handin4Model.Mesurement)">
         <MappingFragment StoreEntitySet="Mesurements">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Value" ColumnName="Value" />
           <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
           <ScalarProperty Name="SensorId" ColumnName="SensorId" />
         </MappingFragment>
       </EntityTypeMapping>

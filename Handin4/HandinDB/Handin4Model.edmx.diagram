@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4be6fdb11179484cb923931059f24a16" Name="Diagram1" >
-        <EntityTypeShape EntityType="Handin4Model.Sensor" Width="1.5" PointX="4.25" PointY="0.625" />
-        <EntityTypeShape EntityType="Handin4Model.Mesurement" Width="1.5" PointX="6.875" PointY="0.625" />
-        <AssociationConnector Association="Handin4Model.SensorMesurement" />
+        <EntityTypeShape EntityType="Handin4Model.Sensor" Width="1.5" PointX="4.375" PointY="2.625" />
+        <EntityTypeShape EntityType="Handin4Model.Mesurement" Width="1.5" PointX="6.75" PointY="3" />
+        <AssociationConnector Association="Handin4Model.SensorMesurement1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
