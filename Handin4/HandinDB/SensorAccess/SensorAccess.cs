@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using HandinDB;
 
@@ -53,7 +54,7 @@ namespace Handin
             using (var db = new Handin4ModelContainer())
             {
                 var searchSensor = from sensor in db.Sensors
-                                   where sensor.Id == sensorId && sensor.ApartmentId == apartmentId
+                                   where sensor.Id == sensorId// && sensor.ApartmentId == apartmentId
                                    select sensor;
 
                 if (!searchSensor.Any()) return false;
