@@ -60,28 +60,51 @@ Med andre ord så er RA \textbf{en entydig måde at beskrive en database's opfø
 Videre så forklare teksten: \textit{"Operators in relational algebra are not the same as SQL operators, even if they have the same name. For example, the SELECT statement exists in SQL, and in RA. These two uses of SELECT are not the same. The DBMS takes whatever SQL statements the user types and translate them into RA operations before applying them to the database."}
 
 % must
-\subsubsection{Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...)}
+\subsection{Kom herunder ind på: relation, tuple, set og operatorer (select, projection, join...)}
 
-\paragraph{Relation}
+\subsubsection{Relation}
 Et set af tupler.
 
-\paragraph{Tuple}
+\subsubsection{Tuple}
 En samling af attributter som beskriver \textit{"some real world entity"}.
 
-\paragraph{Set}
+\subsubsection{Set}
 
+\subsubsection{Operatorer}
 
-\paragraph{Operatorer}
+Til beskrivelse af div. operatorer bruger vi følgende tabel:
 
-ælkjælkj ælkdj fgsælkdfsj gæodsfijgæ osdifj gpæoijg sdæ.
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{center}
+	\begin{tabular}{c}
+		\textbf{\large Studerende}	\\
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\textbf{Navn}&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
+			\hline
+			John Derp	& 24 & 7,7	& john@derp.dk		\\
+			\hline
+		\end{tabular}
+	\end{tabular}
+\end{center}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{figs/spm6/operators}
-	\caption{Forskellige operatore i RA.}
-	\label{fig:operators}
-\end{figure}
+%\begin{center}
+%	\begin{tabular}{c|c|c}
+%		Navn		&		Symbol				& 		Eksempel		\\
+%		\hline 
+%		Select		&		Sigma ($\sigma$)	&		Derp			\\
+%		Select		&		Sigma ($\sigma$)	&		Derp			\\
+%		Select		&		Sigma ($\sigma$)	&		Derp			\\
+%	\end{tabular}
+%\end{center}
 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{figs/spm6/operators}
+%	\caption{Forskellige operatore i RA.}
+%	\label{fig:operators}
+%\end{figure}
 
 % must
 \subsubsection{Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer}
