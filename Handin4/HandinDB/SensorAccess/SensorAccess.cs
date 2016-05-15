@@ -9,7 +9,7 @@ namespace Handin
     {
         public bool AddData(int sensorId, int apartmentId, double value, string timestamp)
         {
-            if (SensorExists(sensorId, apartmentId) == false)
+            if (SensorExists(sensorId) == false)
             {
                 if (CreateSensorInDb(sensorId, apartmentId) == false) return false;
             }
@@ -21,7 +21,7 @@ namespace Handin
 
         private bool CreateMesurement(int sensorId, int apartmentId, double value, string timestamp)
         {
-            if (SensorExists(sensorId, apartmentId) == false) return false;
+            if (SensorExists(sensorId) == false) return false;
 
             Mesurement mesurement = new Mesurement() {SensorId = sensorId, Timestamp = timestamp, Value = value};
 
@@ -36,7 +36,7 @@ namespace Handin
         
         private bool CreateSensorInDb(int sensorId, int apartmentId)
         {
-            if (SensorExists(sensorId, apartmentId) == true) return false;
+            if (SensorExists(sensorId) == true) return false;
 
             Sensor sensor = new Sensor() {Id = sensorId, ApartmentId = apartmentId};
 
@@ -49,12 +49,12 @@ namespace Handin
             return true;
         }
 
-        private bool SensorExists(int sensorId, int apartmentId)
+        private bool SensorExists(int sensorId)
         {
             using (var db = new Handin4ModelContainer())
             {
                 var searchSensor = from sensor in db.Sensors
-                                   where sensor.Id == sensorId// && sensor.ApartmentId == apartmentId
+                                   where sensor.Id == sensorId //&& sensor.ApartmentId == apartmentId
                                    select sensor;
 
                 if (!searchSensor.Any()) return false;
