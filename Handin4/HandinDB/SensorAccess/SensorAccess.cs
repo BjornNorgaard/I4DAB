@@ -35,7 +35,7 @@ namespace Handin
         
         private bool CreateSensorInDb(int sensorId, int apartmentId)
         {
-           // if (SensorExists(sensorId, apartmentId) == true) return false;
+            if (SensorExists(sensorId, apartmentId) == true) return false;
 
             Sensor sensor = new Sensor() {Id = sensorId, ApartmentId = apartmentId};
 

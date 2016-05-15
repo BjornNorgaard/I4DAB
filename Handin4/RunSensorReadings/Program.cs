@@ -12,6 +12,11 @@ namespace RunSensorReadings
         static void Main(string[] args)
         {
             var sensorReader = new SensorReader();
+
+            //using (var db = new Handin4ModelContainer())
+            //{
+            //    db.Database.ExecuteSqlCommand("DELETE [Sensors]");
+            //}
         }
     }
 }
