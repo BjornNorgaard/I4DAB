@@ -27,6 +27,7 @@ namespace Handin
             using (var db = new Handin4ModelContainer())
             {
                 db.Mesurements.Add(mesurement);
+                db.SaveChanges();
             }
 
             return true;
@@ -41,6 +42,7 @@ namespace Handin
             using (var db = new Handin4ModelContainer())
             {
                 db.Sensors.Add(sensor);
+                db.SaveChanges();
             }
 
             return true;

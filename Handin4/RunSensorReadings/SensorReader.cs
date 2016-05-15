@@ -11,8 +11,8 @@ namespace HandinDB
 {
     public class SensorReader
     {
-        private int CurrentFile = 1;
-        private ISensorAccess sensorAccess = new SensorAccess();
+        private int _currentFile = 1;
+        private readonly ISensorAccess _sensorAccess = new SensorAccess();
         private readonly WebClient _webClient = new WebClient();
 
         public SensorReader()
@@ -31,15 +31,17 @@ namespace HandinDB
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                //sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp);
-                Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
+                if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp))
+                    continue;
+                Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " +
+                                  sensor.Value + ", " + sensor.Timestamp);
                 totalInsertions++;
             }
             Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
         }
 
 
-        private List<GDLSensor> ConvertFileToSensorList(string jsonFile)
+        private static IEnumerable<GDLSensor> ConvertFileToSensorList(string jsonFile)
         {
             var tempSensorList = new List<GDLSensor>();
             var stringArray = jsonFile.Split('{', '}');
@@ -53,7 +55,7 @@ namespace HandinDB
 
         public string ReadFile()
         {
-            return _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" + CurrentFile++ +
+            return _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" + _currentFile++ +
                                   ".json");
         }
     }
