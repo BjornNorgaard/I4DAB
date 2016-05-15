@@ -13,10 +13,10 @@ namespace HandinDB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HandinContext : DbContext
+    public partial class Handin4ModelContainer : DbContext
     {
-        public HandinContext()
-            : base("name=HandinContext")
+        public Handin4ModelContainer()
+            : base("name=Handin4ModelContainer")
         {
         }
     
