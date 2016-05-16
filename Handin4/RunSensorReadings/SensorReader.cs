@@ -28,13 +28,14 @@ namespace HandinDB
         {
             var sensorList = ConvertFileToSensorList(ReadFile());
             var totalInsertions = 0;
+
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp))
-                    continue;
-                Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " +
-                                  sensor.Value + ", " + sensor.Timestamp);
+                if (_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp) == false) continue;
+
+                Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
+
                 totalInsertions++;
             }
             Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
