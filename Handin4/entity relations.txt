@@ -1,0 +1,3 @@
+Sensor can have * (Many) instances of Mesurement. Use Sensor.Mesurements to access the Mesurement instances.
+
+Mesurement can have 1 (One) instance of Sensor. Use Mesurement.Sensor to access the Sensor instance.
