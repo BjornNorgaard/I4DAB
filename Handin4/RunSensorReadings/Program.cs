@@ -16,7 +16,7 @@ namespace RunSensorReadings
             using (var db = new Handin4ModelContainer())
             {
                 db.Database.ExecuteSqlCommand("DELETE [Mesurements]");
-                db.Database.ExecuteSqlCommand("delete [sensors]");
+                db.Database.ExecuteSqlCommand("DELETE [sensors]");
             }
         }
     }
