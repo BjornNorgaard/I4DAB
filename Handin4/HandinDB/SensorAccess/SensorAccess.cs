@@ -38,7 +38,7 @@ namespace Handin
         {
             if (SensorExists(sensorId) == true) return false;
 
-            Sensor sensor = new Sensor() {Id = sensorId, ApartmentId = apartmentId};
+            Sensor sensor = new Sensor() {SensorId = sensorId, ApartmentId = apartmentId};
 
             using (var db = new Handin4ModelContainer())
             {
@@ -54,10 +54,10 @@ namespace Handin
             using (var db = new Handin4ModelContainer())
             {
                 var searchSensor = from sensor in db.Sensors
-                                   where sensor.Id == sensorId //&& sensor.ApartmentId == apartmentId
+                                   where sensor.SensorId == sensorId //&& sensor.ApartmentId == apartmentId
                                    select sensor;
 
-                if (!searchSensor.Any()) return false;
+                if (searchSensor.Any() == false) return false;
                 if (searchSensor.Count() > 1) throw new ArgumentException("Herro pree, more than one sensor was found!");
             }
 

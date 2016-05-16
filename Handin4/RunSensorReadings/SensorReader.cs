@@ -32,7 +32,11 @@ namespace HandinDB
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                if (_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp) == false) continue;
+                if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp))
+                {
+                    Console.WriteLine("Lortet virker ikke!");
+                    continue;
+                }
 
                 Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
 

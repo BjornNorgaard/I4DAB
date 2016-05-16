@@ -19,6 +19,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ApartmentId" Type="int" Nullable="false" />
+    <Property Name="SensorId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Mesurements">
     <Key>
@@ -60,6 +61,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ApartmentId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Mesurements" Relationship="Handin4Model.SensorMesurement1" FromRole="Sensor" ToRole="Mesurement" />
+          <Property Name="SensorId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Mesurement">
           <Key>
@@ -94,6 +96,7 @@
         <MappingFragment StoreEntitySet="Sensors">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ApartmentId" ColumnName="ApartmentId" />
+          <ScalarProperty Name="SensorId" ColumnName="SensorId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
