@@ -70,7 +70,7 @@ Videoerne i nedstående playliste var \textbf{meget} brugbare:\\
 Et set af tupler.
 
 \subsubsection{Tuple}
-En samling af attributter som beskriver \textit{"some real world entity"}.
+En samling af attributter (kolonner/domæner) som beskriver \textit{"some real world entity"}.
 
 \subsubsection{Set}
 
@@ -89,28 +89,23 @@ Et udtryk vil være på denne form:
 operator_{betingelse} \text{ and } _{betingelse} (\text{i tabel})
 \end{equation*}
 
-Til beskrivelse af div. operatorer bruger vi følgende tabel:
+Til beskrivelse af div. operatorer bruger vi tabel \ref{tab:stud} på side \pageref{tab:stud}:
 
-\setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.2}
-\begin{center}
-	\begin{tabular}{l}\label{tab:stud}
-		\textbf{\large Studerende}	\\
-		\begin{tabular}{|l|c|c|l|}		
-			\hline
-			\textbf{Navn}&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
-			\hline
-			John Derp	& 24 & 7,7	& john@derp.me		\\
-			\hline
-			Hans Hansen	& 45 & 9,8	& hans@landmand.dk		\\
-			\hline
-			Brian Jensen& 22 & 4,5	& brian@randers.dk		\\
-			\hline
-			Signe Andersen	& 25 & 8,6	& signe@hotmail.com		\\
-			\hline
-		\end{tabular}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lrrl}
+		\toprule
+		\textbf{Navn}	&\textbf{Alder}	&\textbf{Gennemsnit}&\textbf{Email}\\
+		\midrule
+		John Derp		& 24 			& 7,7	& john@derp.me			\\			
+		Hans Hansen		& 45 			& 9,8	& hans@landmand.dk		\\			
+		Brian Jensen	& 22 			& 4,5	& brian@randers.dk		\\			
+		Signe Andersen	& 25 			& 8,6	& signe@hotmail.com		\\
+		\bottomrule
 	\end{tabular}
-\end{center}
+	\caption{Tabel over studerende.}
+	\label{tab:stud}
+\end{table}
 
 \subsubsection{Select $\sigma$}
 
@@ -127,20 +122,19 @@ Med relationel algebra vil dette se således ud:
 
 Dette vil så returnere følgende tabel:
 
-\begin{center}
-	\begin{tabular}{l}
-		\textbf{\large Studerende ændre end 23 med snit over 8}	\\
-		\begin{tabular}{|l|c|c|l|}
-			\hline
-			\textbf{Navn}&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
-			\hline
-			Hans Hansen	& 45 & 9,8	& hans@landmand.dk		\\
-			\hline
-			Signe Andersen	& 25 & 8,6	& signe@hotmail.com		\\
-			\hline
-		\end{tabular}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lrrl}
+		\toprule
+		\textbf{Navn}	&\textbf{Alder}&\textbf{Gennemsnit}&\textbf{Email}\\
+		\midrule			
+		Hans Hansen		& 45 & 9,8	& hans@landmand.dk	\\			
+		Signe Andersen	& 25 & 8,6	& signe@hotmail.com	\\
+		\bottomrule
 	\end{tabular}
-\end{center}
+	\caption{Studerende ældre end 23 med snit over 8.}
+\end{table}
+
 
 På denne måde laver \textbf{\textit{select}} operatoren en \textit{horizontal partition} med to dele: én der opfylder betingelserne og én som ikke gør.
 
@@ -156,24 +150,20 @@ Denne operator bruges til at lave en \textit{vertical partitionering} og giver o
 
 Hvilket så vil give os følgende tabel:
 
-\begin{center}
-	\begin{tabular}{l}\label{tab:stud}
-		\textbf{\large Studerendes navn og email}	\\
-		\begin{tabular}{|l|l|}		
-			\hline
-			\textbf{Navn}&\textbf{Email}\\
-			\hline
-			John Derp		&  john@derp.me		\\
-			\hline
-			Hans Hansen		&  hans@landmand.dk		\\
-			\hline
-			Brian Jensen	&  brian@randers.dk		\\
-			\hline
-			Signe Andersen	& signe@hotmail.com		\\
-			\hline
-		\end{tabular}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Navn}	& \textbf{Email}	\\
+		\midrule
+		John Derp		& john@derp.me		\\			
+		Hans Hansen		& hans@landmand.dk	\\			
+		Brian Jensen	& brian@randers.dk	\\			
+		Signe Andersen	& signe@hotmail.com	\\
+		\bottomrule
 	\end{tabular}
-\end{center}
+	\caption{Studerende med navn og email.}
+\end{table}
 
 \subsubsection{Kombination af Project $\pi$ og Select $\sigma$}
 
@@ -185,22 +175,19 @@ Disse operatorer kan også anvendes samtidigt og bruges her til at finde navn og
 
 Dette ville så give os følgende tabel:
 
-\begin{center}
-	\begin{tabular}{l}\label{tab:stud}
-		\textbf{\large Stud: navn, email \& snit $>$ 7}	\\
-		\begin{tabular}{|l|l|}		
-			\hline
-			\textbf{Navn}&\textbf{Email}\\
-			\hline
-			John Derp		&  john@derp.me		\\
-			\hline
-			Hans Hansen		&  hans@landmand.dk		\\
-			\hline
-			Signe Andersen	& signe@hotmail.com		\\
-			\hline
-		\end{tabular}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Navn}	& \textbf{Email}	\\
+		\midrule
+		John Derp		& john@derp.me		\\			
+		Hans Hansen		& hans@landmand.dk	\\			
+		Signe Andersen	& signe@hotmail.com	\\
+		\bottomrule
 	\end{tabular}
-\end{center}
+	\caption{Studerende med snit over 7, kun navn og email er vist.}
+\end{table}
 
 % must
 %\subsubsection{Samt RA' betydningen for opbygningen af  SQL (Structured Querry Language) erklæringer}
