@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Threading;
 using Handin;
 using Newtonsoft.Json;
 using RunSensorReadings;
@@ -24,6 +22,7 @@ namespace HandinDB
             }
         }
 
+
         private void SaveReadingsToDatabase()
         {
             var sensorList = ConvertFileToSensorList(ReadFile());
@@ -32,17 +31,21 @@ namespace HandinDB
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp))
-                {
-                    Console.WriteLine("Lortet virker ikke!");
+                if (
+                    !_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value,
+                        DateTime.Parse(sensor.Timestamp)))
                     continue;
-                }
 
-                Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
+                Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " +
+                                  sensor.Value + ", " + sensor.Timestamp);
 
                 totalInsertions++;
+
             }
-            Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
+            Console.WriteLine
+                ("Inserted a total of: " +
+                 totalInsertions
+                 + " sensor measures");
         }
 
 
@@ -60,7 +63,9 @@ namespace HandinDB
 
         public string ReadFile()
         {
-            return _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" + _currentFile++ +
+            return
+                _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" +
+                                          _currentFile++ +
                                   ".json");
         }
     }
