@@ -1,0 +1,14 @@
+% indholdsfortegnelser
+
+\setcounter{tocdepth}{2} 	% bestemmer hvor "dyb" indholdsfortegnelsen er
+
+\renewcommand\cftsecleader{\cftdotfill{\cftdotsep}} % dot fill in contents
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+\thispagestyle{empty}	% fjerner sidetal ved indholdfortegnelsen
+\cleardoublepage		% rydder resten af siden
+\setcounter{page}{1}	% "nulstiller" sidetal
+

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Threading;
 using Handin;
 using Newtonsoft.Json;
 using RunSensorReadings;
@@ -20,7 +18,7 @@ namespace HandinDB
             for (int i = 0; i < 11800; i++)
             {
                 SaveReadingsToDatabase();
-                //Thread.Sleep(5000);
+                Thread.Sleep(5000);
             }
         }
 
@@ -68,7 +66,7 @@ namespace HandinDB
             return
                 _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" +
                                           _currentFile++ +
-                                          ".json");
+                                  ".json");
         }
     }
 }
