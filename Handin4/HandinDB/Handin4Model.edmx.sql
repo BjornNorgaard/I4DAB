@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/16/2016 00:49:25
--- Generated from EDMX file: C:\cygwin64\home\Mr. Derp-lappitoppi\git-repos\I4DAB - Bjørn\Handin4\HandinDB\Handin4Model.edmx
+-- Date Created: 05/17/2016 12:12:58
+-- Generated from EDMX file: C:\Users\Norgaard\Documents\Git\I4DAB\Handin4\HandinDB\Handin4Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_SensorMesurement1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Mesurements] DROP CONSTRAINT [FK_SensorMesurement1];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Sensors]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Sensors];
+GO
+IF OBJECT_ID(N'[dbo].[Mesurements]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Mesurements];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -30,7 +39,8 @@ GO
 -- Creating table 'Sensors'
 CREATE TABLE [dbo].[Sensors] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [ApartmentId] int  NOT NULL
+    [ApartmentId] int  NOT NULL,
+    [SensorId] int  NOT NULL
 );
 GO
 

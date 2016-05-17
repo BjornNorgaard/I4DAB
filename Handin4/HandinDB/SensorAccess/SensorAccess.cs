@@ -14,7 +14,7 @@ namespace Handin
                 if (CreateSensorInDb(sensorId, apartmentId) == false) return false;
             }
 
-            if (CreateMesurement(sensorId, apartmentId, value, timestamp) == false) return false;
+            if (CreateMesurement(sensorId, value, timestamp) == false) return false;
 
             return true;
         }
@@ -54,10 +54,10 @@ namespace Handin
             using (var db = new Handin4ModelContainer())
             {
                 var searchSensor = from sensor in db.Sensors
-                                   where sensor.Id == sensorId //&& sensor.ApartmentId == apartmentId
+                                   where sensor.Id == sensorId
                                    select sensor;
 
-                if (!searchSensor.Any()) return false;
+                if (searchSensor.Any() == false) return false;
                 if (searchSensor.Count() > 1) throw new ArgumentException("Herro pree, more than one sensor was found!");
             }
 
