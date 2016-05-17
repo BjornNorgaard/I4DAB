@@ -55,7 +55,7 @@ namespace HandinDB
             }
             return tempSensorList;
         }
-
+     
         public string ReadFile()
         {
             return _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" + _currentFile++ +
