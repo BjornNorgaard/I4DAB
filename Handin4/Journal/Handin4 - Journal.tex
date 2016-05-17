@@ -1,0 +1,38 @@
+\input{utils/preamble}
+
+% Header og footer
+\lhead{I4IKN}	\chead{\myTitle}	\rhead{\today}
+\lfoot{}		\cfoot{}			\rfoot{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\myTitle}{\textbf{Handin4 - Journal}}
+\newcommand{\mySubTitle}{\textit{gruppe 13}}
+
+\title{\myTitle \\ \mySubTitle}
+%\date{}
+\author{
+	Bjørn Nørgaard Sørensen\\
+	stud.nr: 201370248\\
+	bjornnorgaard@post.au.dk
+	\and
+	Joachim Dam Andersen\\
+	stud.nr: 201370031\\
+	mr.anderson@post.au.dk
+	\and
+	Joachim Wind Someting Someting\\
+	stud.nr: 201370318\\
+	mr.derp@post.au.dk
+}
+
+\begin{document}
+	\maketitle							%\newpage
+	\input{utils/indholdsfortegnelser}	\newpage
+	
+	% include sections here
+	\input{docs/introduktion}
+	\input{docs/database}
+	\input{docs/json}
+	\input{docs/konklusion}
+	% include sections before here
+\end{document}
