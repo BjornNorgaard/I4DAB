@@ -22,6 +22,7 @@ namespace HandinDB
             }
         }
 
+
         private void SaveReadingsToDatabase()
         {
             var sensorList = ConvertFileToSensorList(ReadFile());
@@ -32,15 +33,19 @@ namespace HandinDB
                 //insert to database
                 if (
                     !_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value,
-                        DateTime.Parse(sensor.Timestamp))) continue;
-
+                        DateTime.Parse(sensor.Timestamp)))
+                    continue;
 
                 Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " +
                                   sensor.Value + ", " + sensor.Timestamp);
 
                 totalInsertions++;
+
             }
-            Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
+            Console.WriteLine
+                ("Inserted a total of: " +
+                 totalInsertions
+                 + " sensor measures");
         }
 
 
@@ -58,7 +63,9 @@ namespace HandinDB
 
         public string ReadFile()
         {
-            return _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" + _currentFile++ +
+            return
+                _webClient.DownloadString(@"http://userportal.iha.dk/~jrt/i4dab/E14/HandIn4/dataGDL/data/" +
+                                          _currentFile++ +
                                   ".json");
         }
     }
