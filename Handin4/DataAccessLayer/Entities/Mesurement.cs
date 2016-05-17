@@ -8,7 +8,7 @@ namespace DataAccessLayer.Entities
 {
     public partial class Mesurement
     {
-        public int Id { get; set; }
+        public int MesurementId { get; set; }
         public DateTime Timestamp { get; set; }
         public double Value { get; set; }
         public int SensorId { get; set; }

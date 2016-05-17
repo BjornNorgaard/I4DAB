@@ -15,12 +15,12 @@ namespace Handin
                 if (CreateSensorInDb(sensorId, apartmentId) == false) return false;
             }
 
-            if (CreateMesurement(sensorId, apartmentId, value, timestamp) == false) return false;
+            if (CreateMesurement(sensorId,  value, timestamp) == false) return false;
 
             return true;
         }
 
-        private bool CreateMesurement(int sensorId, int apartmentId, double value, DateTime timestamp)
+        private bool CreateMesurement(int sensorId, double value, DateTime timestamp)
         {
             if (SensorExists(sensorId) == false) return false;
 
@@ -39,7 +39,7 @@ namespace Handin
         {
             if (SensorExists(sensorId) == true) return false;
 
-            Sensor sensor = new Sensor() {Id = sensorId, ApartmentId = apartmentId};
+            Sensor sensor = new Sensor() {SensorId = sensorId, ApartmentId = apartmentId,};
 
             using (var db = new Context())
             {
@@ -55,7 +55,7 @@ namespace Handin
             using (var db = new Context())
             {
                 var searchSensor = from sensor in db.Sensors
-                                   where sensor.Id == sensorId //&& sensor.ApartmentId == apartmentId
+                                   where sensor.SensorId == sensorId //&& sensor.ApartmentId == apartmentId
                                    select sensor;
 
                 if (!searchSensor.Any()) return false;

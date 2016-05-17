@@ -79,15 +79,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HandinDB\HandinDB.csproj">
-      <Name>HandinDB</Name>
-      <Project>{5957a45f-2256-4e7d-8e5d-876ce7d4c1c2}</Project>
-      <Private>True</Private>
-      <IsModelAware>True</IsModelAware>
-      <GenerateSqlClrDdl>True</GenerateSqlClrDdl>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <RefactorLog Include="DatabaseFirst.refactorlog" />
   </ItemGroup>
 </Project>

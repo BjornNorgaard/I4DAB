@@ -31,7 +31,7 @@ namespace HandinDB
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, sensor.Timestamp))
+                if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, DateTime.Parse(sensor.Timestamp)))
                     continue;
                 Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " +
                                   sensor.Value + ", " + sensor.Timestamp);

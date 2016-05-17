@@ -12,7 +12,7 @@ namespace DataAccessLayer
 {
     class Context : DbContext
     {
-            public Context() : base("name=Handin4ModelContainer")
+            public Context() : base("name=Context")
             {
             }
 
