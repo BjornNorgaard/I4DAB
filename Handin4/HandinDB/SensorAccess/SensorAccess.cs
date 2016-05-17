@@ -7,7 +7,7 @@ namespace Handin
 {
     public class SensorAccess : ISensorAccess
     {
-        public bool AddData(int sensorId, int apartmentId, double value, string timestamp)
+        public bool AddData(int sensorId, int apartmentId, double value, DateTime timestamp)
         {
             if (SensorExists(sensorId) == false)
             {

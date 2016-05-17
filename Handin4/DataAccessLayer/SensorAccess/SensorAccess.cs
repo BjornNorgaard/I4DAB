@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Linq;
-using HandinDB;
+using DataAccessLayer;
+using DataAccessLayer.Entities;
 
 namespace Handin
 {
     public class SensorAccess : ISensorAccess
     {
-        public bool AddData(int sensorId, int apartmentId, double value, string timestamp)
+        public bool AddData(int sensorId, int apartmentId, double value, DateTime timestamp)
         {
             if (SensorExists(sensorId) == false)
             {
@@ -19,13 +20,13 @@ namespace Handin
             return true;
         }
 
-        private bool CreateMesurement(int sensorId, int apartmentId, double value, string timestamp)
+        private bool CreateMesurement(int sensorId, int apartmentId, double value, DateTime timestamp)
         {
             if (SensorExists(sensorId) == false) return false;
 
             Mesurement mesurement = new Mesurement() {SensorId = sensorId, Timestamp = timestamp, Value = value};
 
-            using (var db = new Handin4ModelContainer())
+            using (var db = new Context())
             {
                 db.Mesurements.Add(mesurement);
                 db.SaveChanges();
@@ -40,7 +41,7 @@ namespace Handin
 
             Sensor sensor = new Sensor() {Id = sensorId, ApartmentId = apartmentId};
 
-            using (var db = new Handin4ModelContainer())
+            using (var db = new Context())
             {
                 db.Sensors.Add(sensor);
                 db.SaveChanges();
@@ -51,7 +52,7 @@ namespace Handin
 
         private bool SensorExists(int sensorId)
         {
-            using (var db = new Handin4ModelContainer())
+            using (var db = new Context())
             {
                 var searchSensor = from sensor in db.Sensors
                                    where sensor.Id == sensorId //&& sensor.ApartmentId == apartmentId
