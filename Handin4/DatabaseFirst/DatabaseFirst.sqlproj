@@ -60,12 +60,15 @@
     <Folder Include="Tables" />
     <Folder Include="Procedures" />
     <Folder Include="Functions" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Mesurements.sql" />
     <Build Include="Tables\Sensors.sql" />
     <Build Include="Procedures\GetAllData.sql" />
     <Build Include="Functions\GetFunction.sql" />
+    <Build Include="Procedures\InsertMesurements.sql" />
+    <Build Include="GetAllView.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -83,5 +86,8 @@
       <IsModelAware>True</IsModelAware>
       <GenerateSqlClrDdl>True</GenerateSqlClrDdl>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DatabaseFirst.refactorlog" />
   </ItemGroup>
 </Project>

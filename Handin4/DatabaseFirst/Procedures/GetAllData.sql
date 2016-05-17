@@ -4,7 +4,7 @@ AS
 	SELECT * 
 	FROM GetFunction() AS mes
 	INNER JOIN Sensors AS sen
-	ON sen.Id = mes.SensorId
+	ON sen.SensorId = mes.SensorId
 	WHERE sen.ApartmentId = @ApartmentId
 RETURN
 
