@@ -1,9 +1,0 @@
-\select@language {english}
-\contentsline {section}{\numberline {1}Database design}{1}
-\contentsline {subsection}{\numberline {1.1}Rules/requirements describing the associations/relationships}{1}
-\contentsline {subsubsection}{\numberline {1.1.1}Antagelser}{1}
-\contentsline {subsubsection}{\numberline {1.1.2}Regler}{1}
-\contentsline {subsection}{\numberline {1.2}UML og ER diagrams}{1}
-\contentsline {subsection}{\numberline {1.3}Stored procedures}{1}
-\contentsline {section}{\numberline {2}JSON og netv\IeC {\ae }rk}{1}
-\contentsline {section}{\numberline {3}Konklusion}{1}
