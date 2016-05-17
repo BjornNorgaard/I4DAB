@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Threading;
 using Handin;
 using Newtonsoft.Json;
 using RunSensorReadings;
@@ -32,11 +30,13 @@ namespace HandinDB
             foreach (var sensor in sensorList)
             {
                 //insert to database
-                if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, DateTime.Parse(sensor.Timestamp)))
-                    continue;
-                }
+                if (
+                    !_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value,
+                        DateTime.Parse(sensor.Timestamp))) continue;
 
-                Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
+
+                Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " +
+                                  sensor.Value + ", " + sensor.Timestamp);
 
                 totalInsertions++;
             }
