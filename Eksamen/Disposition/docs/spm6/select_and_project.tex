@@ -1,0 +1,39 @@
+\subsubsection{Kombination af Project $\pi$ og Select $\sigma$}
+
+Disse operatorer kan også anvendes samtidigt og bruges her til at finde navn og email for studerende, som har et gennemsnit over 7 i tabel~\ref{tab:stud}.
+
+\begin{equation}
+\pi_{navn, email}\sigma_{gennemsnit>7}(Studerende)
+\end{equation}
+
+\begin{table}[H]
+	%\centering
+	\begin{tabular}{lrrl}
+		\toprule
+		\textbf{Navn}	&\textbf{Alder}	&\textbf{Gennemsnit}&\textbf{Email}\\
+		\midrule
+		John Derp		& 24 			& 7,7	& john@derp.me			\\			
+		Hans Hansen		& 45 			& 9,8	& hans@landmand.dk		\\			
+		Brian Jensen	& 22 			& 4,5	& brian@randers.dk		\\			
+		Signe Andersen	& 25 			& 8,6	& signe@hotmail.com		\\
+		\bottomrule
+	\end{tabular}
+	\caption{Tabel: Studerende.}
+	\label{tab:stud}
+\end{table}
+
+Dette ville så give os følgende tabel:
+
+\begin{table}[H]
+	%\centering
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Navn}	& \textbf{Email}	\\
+		\midrule
+		John Derp		& john@derp.me		\\			
+		Hans Hansen		& hans@landmand.dk	\\			
+		Signe Andersen	& signe@hotmail.com	\\
+		\bottomrule
+	\end{tabular}
+	\caption{Studerende med snit over 7, kun navn og email.}
+\end{table}

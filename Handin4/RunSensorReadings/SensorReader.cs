@@ -20,7 +20,7 @@ namespace HandinDB
             for (int i = 0; i < 11800; i++)
             {
                 SaveReadingsToDatabase();
-                Thread.Sleep(5);
+                //Thread.Sleep(5000);
             }
         }
 
@@ -28,13 +28,16 @@ namespace HandinDB
         {
             var sensorList = ConvertFileToSensorList(ReadFile());
             var totalInsertions = 0;
+
             foreach (var sensor in sensorList)
             {
                 //insert to database
                 if (!_sensorAccess.AddData(sensor.SensorId, sensor.AppartmentId, sensor.Value, DateTime.Parse(sensor.Timestamp)))
                     continue;
-                Console.WriteLine("inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " +
-                                  sensor.Value + ", " + sensor.Timestamp);
+                }
+
+                Console.WriteLine("Inserted to database: " + sensor.SensorId + ", " + sensor.AppartmentId + ", " + sensor.Value + ", " + sensor.Timestamp);
+
                 totalInsertions++;
             }
             Console.WriteLine("Inserted a total of: " + totalInsertions + " sensor measures");
