@@ -19,7 +19,7 @@ namespace Handin
             return true;
         }
 
-        private bool CreateMesurement(int sensorId, int apartmentId, double value, DateTime timestamp)
+        private bool CreateMesurement(int sensorId, int apartmentId, double value, string timestamp)
         {
             if (SensorExists(sensorId) == false) return false;
 
