@@ -57,8 +57,8 @@
     <Compile Include="SensorAccess\SensorAccess.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="SensorAccess\App.config" />
     <None Include="packages.config" />
+    <None Include="SensorAccess\App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
