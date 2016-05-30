@@ -112,7 +112,6 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 
 \begin{enumerate}
 	\item Identify entities - list all potential entity types. These are the \textbf{object of interest} in the system. It is better to put too many entities in at this stage and them discard them later if necessary.
-	
 	\item Remove duplicate entities - Ensure that they really separate entity types.
 	
 	\begin{itemize}
@@ -120,7 +119,18 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 		\item The library is the system, thus should not be an entity type.
 	\end{itemize}
 	
+	I vores eksempel med varesalg har vi fx følgende:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figs/spm1/salesProductEntities.png}
+		\caption{}
+		\label{fig:salesProductEntities}
+	\end{figure}
+
+	
 	\item List the attributes of each entity (all properties to describe the entity which are relevant to the application).
+	
+	I vores eksempel med varesalg, kunne attributter fx være: Pris, Løn osv.
 	
 	\begin{itemize}
 		\item Ensure that the entity types are really needed.
@@ -136,11 +146,23 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 		\item This may not be possible for some weak entities.
 	\end{itemize}
 	
+	I vores eksempel med varesalg, kunne keys eksempelvis EmployeeId og ItemNo.
+	
 	\item Define the relationships.
 	
 	\begin{itemize}
 		\item Examine each entity type to see its relationship to the others.
 	\end{itemize}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figs/spm1/salesProductRelation.png}
+		\caption{}
+		\label{fig:salesProductRelation}
+	\end{figure}
+	
+	Vi definerer relationen "Sælger".
+
 	
 	\item Describe the cardinality and optionality of the relationships.
 	
@@ -148,11 +170,33 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 		\item Examine the constraints between participating entities.
 	\end{itemize}
 	
-	\item Remove redundant relationships.
+	\item Fjern redundante relationer.
 	
 	\begin{itemize}
 		\item Examine the ER model for redundant relationships.
-	\end{itemize}	
+	\end{itemize}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figs/spm1/ternaryRelation.PNG}
+		\caption{Ternary relationship}
+		\label{fig:ternaryRelation}
+	\end{figure}
+	
+	Dette relationship gør det uklart hvilken salgsassistent der har solgt et specifikt produkt til en kunde.
+	Dette ternary relationship, kan undgås ved at introducere en salgs-entitet.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figs/spm1/nonTernaryRelationPNG.PNG}
+		\caption{Replace for ternary relationship}
+		\label{fig:nonTernaryRelationPNG}
+	\end{figure}
+	
+	Da både kunde og salgsassistent kan linkes til samme salg af produktet, mistes der ikke data.
+
+
+		
 \end{enumerate}
 
 \todo{find godt eksempel}
