@@ -29,10 +29,46 @@
 \subsection{Hvorledes omsættes et konceptuelt databasedesign til en konkret database?}
 
 % must
-\subsubsection{Designregler}
+\subsection{De 10 Designregler}
+
+\begin{enumerate}
+	\item \textbf{Entity}\\
+	Én entitet skal svare en én tabel. Entiteten skal have samme navn som tabellen. Skal også helst være et navneord i ental. 
+	
+	\item \textbf{Many-to-many binary relationship}\\
+	Entiteternes primærnøgler bliver sammensat i en ny entitet, hvor de er fremmednøgler.
+	
+	\item \textbf{One-to-many binary relationship}\\
+	''Mange''-entiteten skal have fremmednøglen, ellers brydes 1. normalform\todo{le fuq? Indsæt muligvis pageref til andet spm}.
+	
+	\item \textbf{Recursive binary relationship}\\
+	Samme regler er gældende som ved binære relationer.
+	
+	\item \textbf{Ternary relationship}\\
+	En weaktabel oprettes med en primær nøgle der er sammensat af de 3 fremmednøgler.\todo{Slide says ''+other stuff'', what other stuff?}
+	
+	\item \textbf{Attribute of an entity}\\
+	En attribut af en entitet kan mappes direkte som en attribut i entitetens tabel.
+	
+	\item \textbf{Generalization super-class (super-type) entity}\\
+	En super entitet mappes direkte til en SQL tabel.
+	
+	\item \textbf{Generalization super-class (subtype) entity}\\
+	En sub entitet mappes til sin egen table for super entiteten. Primær nøglen fra super entiteten
+	bliver fremmednøgle hos sub entiteten.
+	
+	\item \textbf{Mandatory constrint (1 lower bound) on the “one” side of a one-to-many relationship}\\
+	Fremmednøglen skal ligge på mange siden, og sættes til ’not null’. Eks. En video skal ejes af en
+	butik, butik behøver ikke eje en video. Ved at sætte fremmednøglen på mange siden får vi at; en
+	butik kan godt oprettes uden en video, men en video skal tilknyttes en butik.
+	
+	\item \textbf{Subject gets targets Primary key as forreing key}\\
+	I en 1 til 1 relation skal man identificere subject og target. Target har interesse i subjekt.
+	
+\end{enumerate}
 
 % must
-\subsubsection{Relationsmodellering}
+\subsection{Relationsmodellering}
 
 % must
-\subsubsection{Skema}
+\subsection{Skema}
