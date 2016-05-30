@@ -30,15 +30,37 @@
 
 % must
 \subsection{Hvad er en relationel database (RDB)}
-
+En relationel database er en digital database som er baseret på den relationelle model.
+I den relationelle database, er data repræsenteret i records, som grupperes i relationer. Records består af kollonner, som hver repræsenterer en attribut. Tilsammen udgør dette en tabel. En tabel repræsenterer en entitetstype, hvor tabellens records hver især repræsenterer en instans af denne entitet.
 % must
-\subsection{Kom ind på brugen af nøgler i en RDB}
+\subsection{Kom ind på brugen af nøgler i en RDB}\label{sec:keys}
+En central del af den relationelle database er brugen af nøgler. Nøgler bruges til at identificere information i en database.
+
+DBMS står for at gøre umuliggøre databaseopdateringer der forårsager key duplicates.
 
 % must
 \subsubsection{Primary key}
+Hver record/tuple, har sin egen unikke nøgle - Unik da den kan bruges til at identificere den enkelte record. Disse records kan linkes til andre records i andre tabeller. En primærnøgle kan være en integer, som databasen selv står for at generere.
 
+\begin{lstlisting}
+CREATE TABLE [dbo].[Blogs] (
+[BlogId] INT            IDENTITY (1, 1) NOT NULL,
+[Name]   NVARCHAR (MAX) NULL,
+[Url]    NVARCHAR (MAX) NULL,
+CONSTRAINT [PK_dbo.Blogs] PRIMARY KEY CLUSTERED ([BlogId] ASC)
+);
+\end{lstlisting}
+
+Primær nøgler kan også være brugedefinerede. Fx Name, CPR eller  LicensePlate (Er det naturlige nøgler?). Der kan være en Primær nøgle i en entitet. Det er denne nøgle der kan migreres til andre entieter, og derved definere et relationship.
 % must
 \subsubsection{Foreign key}
+En fremmed nøgle er en unik nøgle der er migreret til en anden entitet.
+Det er denne nøgle der bruges til at finde frem til en record i en anden tabel.
+
+\begin{lstlisting}
+DO STUFF WITH FOREIGN KEYS
+\end{lstlisting}
+
 
 % must
 \subsubsection{Super key}
