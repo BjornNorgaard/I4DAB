@@ -36,7 +36,11 @@ betydende klasser i problemdomænet. Analyserer klassernes association, baggrund
 	\item Anvend De 10 designregler.
 \end{enumerate}
 
-En grund til at lave et velovervejet design er at minimere risikoen for anormaliteter, dvs. fejl eller uregelmæssigheder der opstår i data. Her kan også anvendes normalisering\todo{pageref!}, men det er et andet emne.
+En grund til at lave et velovervejet design er at minimere risikoen for anormaliteter, dvs. fejl eller uregelmæssigheder der opstår i data. Her kan også anvendes normalisering (se side~\pageref{sec:normal}).
+
+% must
+\subsection{Relationsmodellering}
+Når et design skal laves er der nogle bestemte fejl, som skal undgås:
 
 \subsubsection{Faldgruber}
 Når designet laves, er der faldgrupper. Det kan f.eks. være en \textbf{fan trap} eller \textbf{chasm trap}. Disse er kendt som \textbf{Connection Traps} 
@@ -146,12 +150,28 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 \end{enumerate}
 
 % must
-\subsection{Relationsmodellering}
-
-% must
 \subsection{Skema}
-Et skema er det DDL\footnote{Database Definition Language}, der beskriver strukturen i databasen.
-Strukturen består af:
+
+\paragraph{Abstraktions-niveauer} tre forskellige niveauer til at definere skema/model:
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{figs/spm2/skema}
+\caption{De 3 forskellige slags skema.}
+\label{fig:skema}
+\end{figure}
+
+
+\begin{itemize}
+	\item \textbf{External}\\
+	Set fra brugerens vinkel. Forskellige brugere kan have forskellige views.
+	\item \textbf{Logical}\\
+	Relationelle koncepter. Viser tabeller som data mappes til.
+	\item \textbf{Internal}\\
+	Set fra platforms vinkel. Hvordan bruger OS data og hvordan mappes det til hardware.
+\end{itemize}
+
+\paragraph{Om skema} et skema er det DDL\footnote{Database Definition Language}, der beskriver strukturen i databasen. Denne består af:
 
 \begin{itemize}
 	\item Tabeller i databasen.
@@ -161,8 +181,16 @@ Strukturen består af:
 	\item Hvilke attributter, der udgår composite keys (se side~\pageref{sec:keys}).
 \end{itemize}
 
+\paragraph{Integrity constraints} skemaet sørger bl.a. for at overholde disse constraints, hvilket indebærer:
 
+\begin{itemize}
+	\item \textbf{Entity integrity}\\
+	Alle rækker skal være unikke (primærnøgler anvendes for at opnå dette).
+	\item \textbf{Referantiel integrity}\\
+	Alle fremmednøgler skal pege på et elemenet i en anden tabel, eller være \textit{null}.
+\end{itemize}
 
+\todo{Muligvis noget mere om 3-delt syn på information? Måske noget om Ekstern skema, Intern og Logisk? Stort måske...}
 
 
 
