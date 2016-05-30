@@ -36,7 +36,7 @@ I den relationelle database, er data repræsenteret i records, som grupperes i r
 \subsection{Kom ind på brugen af nøgler i en RDB}\label{sec:keys}
 En central del af den relationelle database er brugen af nøgler. Nøgler bruges til at identificere information i en database.
 
-DBMS står for at gøre umuliggøre databaseopdateringer der forårsager key duplicates.
+DBMS står for at umuliggøre databaseopdateringer der forårsager key duplicates.
 
 % must
 \subsubsection{Primary key}
@@ -51,31 +51,29 @@ CONSTRAINT [PK_dbo.Blogs] PRIMARY KEY CLUSTERED ([BlogId] ASC)
 );
 \end{lstlisting}
 
-Primær nøgler kan også være brugedefinerede. Fx Name, CPR eller  LicensePlate (Er det naturlige nøgler?). Der kan være en Primær nøgle i en entitet. Det er denne nøgle der kan migreres til andre entieter, og derved definere et relationship.
+Primær nøgler kan også være brugedefinerede. Fx Name, CPR eller  LicensePlate (kaldet Natural Keys). Der kan være en Primær nøgle i en entitet. Det er denne nøgle der kan migreres til andre entieter, og derved definere et relationship.
 % must
 \subsubsection{Foreign key}
-En fremmed nøgle er en unik nøgle der er migreret til en anden entitet.
+En fremmed nøgle er en unik nøgle der er migreret\todo{migreret? Hvad med ''peger på''} til en anden entitet.
 Det er denne nøgle der bruges til at finde frem til en record i en anden tabel.
-
-\begin{lstlisting}
-DO STUFF WITH FOREIGN KEYS
-\end{lstlisting}
 
 % must
 \subsubsection{Super key}
-En eller flere attributter der tilsammen forcerer unikhed på alle records.
-Kan hver record være unik? hvis ja så har man en super key.
+En eller flere attributter der tilsammen forcerer unikhed på alle records\todo{kolonner?}.
+Kan hver record være unik? hvis ja så har man en super key.\todo{Kan? Forståelse?}
+
+En primærnøgle er en superkey.\todo{korrekt?}
 
 % must
 \subsubsection{Candidate key}
-En kandidat nøgle er en nøgle der kvalificerer sig som unik, dvs. den mindst mulige Superkey. En kandidatnøgle kan bruges som primærnøgle. Eksempel på candidate keys i et Bruger baseret system, hvor Email og Username skal være unikke, vil Email og Username begge være kandidat nøgler.
+En kandidatnøgle er en nøgle der kvalificerer sig som unik, dvs. den mindst\todo{mindst mulige?} mulige Superkey. En kandidatnøgle kan bruges som primærnøgle. Eksempel på candidatekeys i et Brugerbaseret system, hvor Email og Username skal være unikke, vil Email og Username begge være kandidat nøgler.\todo{altså en candidate key er en primærnøgle, som ikke blev ''valgt''?}
 
 \subsubsection{Compound og composite keys}
-En compound key er en nøgle der er sammen af to eller flere simple nøgler (simple nøgler har kun enkelte attributter). Det skal være nøgler!
-En composite key er en nøgle der består af minimum en compound nøgle og mindst en anden attribut eller simpel nøgle. (Den anden attribut behøver ikke være en nøgle!)
+En compound key er en nøgle der er sammensat af to eller flere simple nøgler (simple nøgler har kun enkelte attributter\todo{woot? enkle attributter? betyder?}). Det skal være nøgler!\todo{hvad er så ikke en nøgle?}
+En composite key er en nøgle der består af minimum én compound nøgle og mindst en anden attribut eller simpel nøgle. (Den anden attribut behøver ikke være en nøgle!)\todo{fatter hat...}\todo{et eksempel kunne nok være rart}
 
 \subsubsection{Natural keys}
-Naturlige nøgler er når reel data i databasen bruges som nøgle. Eks Username eller email. xxx\_id er ikke naturlige nøgler.
+Naturlige nøgler er når reel data i databasen bruges som nøgler. F.eks. Username eller email. xxx\_id er ikke naturlige nøgler.
 
 \subsubsection{Alternate keys}
-Kan være primærnægler. Altså er alternate keys samlingen af de kandidatnøgler der ikke blev valgt til primærnøgler. At definere sine alternate keys kan være en god ide hvis man fx gerne vil indeksere efter Email (hvis email altså er alternate key).
+Kan være primærnøgler. Altså er alternate keys samlingen af de kandidatnøgler der ikke blev valgt til primærnøgler\todo{Er candidate nøglerne så også alternate keys?}. At definere sine alternate keys kan være en god ide hvis man fx gerne vil indeksere efter Email (hvis email altså er alternate key)\todo{hvordan defineres dette?}.
