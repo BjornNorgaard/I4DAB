@@ -119,7 +119,18 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 		\item The library is the system, thus should not be an entity type.
 	\end{itemize}
 	
+	I vores eksempel med varesalg har vi fx følgende:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figs/spm1/salesProductEntities.png}
+		\caption{}
+		\label{fig:salesProductEntities}
+	\end{figure}
+
+	
 	\item List the attributes of each entity (all properties to describe the entity which are relevant to the application).
+	
+	I vores eksempel med varesalg, kunne attributter fx være: Pris, Løn osv.
 	
 	\begin{itemize}
 		\item Ensure that the entity types are really needed.
@@ -135,11 +146,23 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 		\item This may not be possible for some weak entities.
 	\end{itemize}
 	
+	I vores eksempel med varesalg, kunne keys eksempelvis EmployeeId og ItemNo.
+	
 	\item Define the relationships.
 	
 	\begin{itemize}
 		\item Examine each entity type to see its relationship to the others.
 	\end{itemize}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figs/spm1/salesProductRelation.png}
+		\caption{}
+		\label{fig:salesProductRelation}
+	\end{figure}
+	
+	Vi definerer relationen "Sælger".
+
 	
 	\item Describe the cardinality and optionality of the relationships.
 	
@@ -153,7 +176,7 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 		\item Examine the ER model for redundant relationships.
 	\end{itemize}
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{figs/spm1/ternaryRelation.PNG}
 		\caption{Ternary relationship}
@@ -163,7 +186,7 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 	Dette relationship gør det uklart hvilken salgsassistent der har solgt et specifikt produkt til en kunde.
 	Dette ternary relationship, kan undgås ved at introducere en salgs-entitet.
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{figs/spm1/nonTernaryRelationPNG.PNG}
 		\caption{Replace for ternary relationship}
