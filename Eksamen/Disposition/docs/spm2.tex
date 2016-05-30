@@ -88,38 +88,60 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 \subsection{De 10 Designregler}
 
 \begin{enumerate}
-	\item \textbf{Entity}\\
-	Én entitet skal svare en én tabel. Entiteten skal have samme navn som tabellen. Skal også helst være et navneord i ental. 
+	\item \textbf{Entity}
+	\begin{itemize}
+		\item Én entitet skal svare en én tabel. Entiteten skal have samme navn som tabellen.
+	\end{itemize}
 	
-	\item \textbf{Many-to-many binary relationship}\\
-	Entiteternes primærnøgler bliver sammensat i en ny entitet, hvor de er fremmednøgler.
+	\item \textbf{Many-to-many binary relationship}
+	\begin{itemize}
+		\item Entiteternes primærnøgler bliver sammensat i en ny entitet hvor de er fremmednøgler, kaldet en \textit{weak entity\footnote{Pga. manglende primærnøgle.}}.
+	\end{itemize}
 	
-	\item \textbf{One-to-many binary relationship}\\
-	''Mange''-entiteten skal have fremmednøglen, ellers brydes 1. normalform\todo{le fuq? Indsæt muligvis pageref til andet spm}.
+	\item \textbf{One-to-many binary relationship}
+	\begin{itemize}
+		\item ''Mange''-entiteten skal have en fremmednøglen, som peger på 'en'-entititens primærnøgle. Ellers brydes 1. normalform.
+	\end{itemize}
+			
+	\item \textbf{Recursive binary relationship}
+	\begin{itemize}
+		\item Samme regler er gældende som ved øvrige binære relationer.
+	\end{itemize}
 	
-	\item \textbf{Recursive binary relationship}\\
-	Samme regler er gældende som ved binære relationer.
+	\item \textbf{Ternary relationship}
+	\begin{itemize}
+		\item En weak-tabel oprettes med en primær nøgle der er sammensat af de 3 fremmednøgler.\todo{Sammensat? Composite nøgle?}
+	\end{itemize}
 	
-	\item \textbf{Ternary relationship}\\
-	En weaktabel oprettes med en primær nøgle der er sammensat af de 3 fremmednøgler.\todo{Slide says ''+other stuff'', what other stuff?}
+	\item \textbf{Attribute of an entity}
+	\begin{itemize}
+		\item En attribut af en entitet skal mappes direkte som en attribut i entitetens tabel.
+	\end{itemize}
 	
-	\item \textbf{Attribute of an entity}\\
-	En attribut af en entitet kan mappes direkte som en attribut i entitetens tabel.
+	\item \textbf{Generalization super-class (super-type) entity}
+	\begin{itemize}
+		\item En super entitet mappes direkte til en SQL tabel.
+	\end{itemize}
 	
-	\item \textbf{Generalization super-class (super-type) entity}\\
-	En super entitet mappes direkte til en SQL tabel.
+	\item \textbf{Generalization sub-class (subtype) entity}
+	%En sub entitet mappes til sin egen table for super entiteten. Primær nøglen fra super entiteten	bliver fremmednøgle hos sub entiteten.
+	\begin{itemize}
+		\item Skal mappes direkte til SQL, men med superklassens primærnøgle som en fremmednøgle.
+	\end{itemize}
 	
-	\item \textbf{Generalization super-class (subtype) entity}\\
-	En sub entitet mappes til sin egen table for super entiteten. Primær nøglen fra super entiteten
-	bliver fremmednøgle hos sub entiteten.
-	
-	\item \textbf{Mandatory constrint (1 lower bound) on the “one” side of a one-to-many relationship}\\
-	Fremmednøglen skal ligge på mange siden, og sættes til ’not null’. Eks. En video skal ejes af en
-	butik, butik behøver ikke eje en video. Ved at sætte fremmednøglen på mange siden får vi at; en
-	butik kan godt oprettes uden en video, men en video skal tilknyttes en butik.
-	
-	\item \textbf{Subject gets targets Primary key as foreign key}\\
-	I en 1 til 1 relation skal man identificere subject og target. Target har interesse i subjekt.
+	\item \textbf{Mandatory constraint on the 'one' side of a \textit{1:M relationship}}
+	\begin{itemize}
+		\item 'En'-entiteten af et \textit{1:M} relation skal altid være mandatory.
+		\item Fremmednøglen i 'mange'-entiteten skal være 'NOT NULL'.
+	\end{itemize}
+		
+	\item \textbf{Subject gets targets Primary key as foreign key}
+	\begin{itemize}
+		\item Bruges ved \textit{1:1} relationer hvis de opstår.
+		\item Identificerer target (den som har interesse i subjekt).
+		\item Subjekt får targets primærnøgle som fremmednøgle.
+		\item Hvis en af entiteterne er mandatory skal den have primærnøglen.
+	\end{itemize}
 	
 \end{enumerate}
 
@@ -128,3 +150,42 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 
 % must
 \subsection{Skema}
+Et skema er det DDL\footnote{Database Definition Language}, der beskriver strukturen i databasen.
+Strukturen består af:
+
+\begin{itemize}
+	\item Tabeller i databasen.
+	\item Attributter i tabellerne.
+	\item Hvilke attributter, der bruges som keys.
+	\item Hvor fremmednøgler peger hen.
+	\item Hvilke attributter, der udgår composite keys (se side~\pageref{sec:keys}).
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
