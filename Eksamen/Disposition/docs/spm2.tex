@@ -41,7 +41,9 @@ En grund til at lave et velovervejet design er at minimere risikoen for anormali
 \subsubsection{Faldgruber}
 Når designet laves, er der faldgrupper. Det kan f.eks. være en \textbf{fan trap} eller \textbf{chasm trap}. Disse er kendt som \textbf{Connection Traps} 
 
-\paragraph{Fan trap} opstår, når en entitet har \textit{1:M} relation til mindst to entiteter. På figur~\ref{fig:fan} kan man se at et \textit{Site} har flere \textit{Department} og \textit{Staff}. Problemet bliver så: \textit{''which staff work in a particular department?''}
+\paragraph{Fan trap} opstår, når en entitet har \textit{1:M} relation til mindst to entiteter. Hvilket betyder at ''vejen'' fra \textit{Dept.} til \textit{Staff} bliver tvetydig. 
+
+På figur~\ref{fig:fan} kan man se at et \textit{Site} har flere \textit{Department} og \textit{Staff}. Problemet bliver så: \textit{''which staff work in a particular department?''}
 
 \begin{figure}[h]
 \centering
@@ -60,6 +62,27 @@ På figur~\ref{fig:fan_solved} vises det hvordan problemet løses ved at ændre 
 \end{figure}
 
 \paragraph{Chasm trap} 
+
+Finder sted når der bør være en relation mellem to entities, men 'stien' imellem dem findes ikke for nogle forekomster. På figur~\ref{fig:chasm} ses problemet.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\linewidth]{figs/spm2/chasm}
+\caption{Chasm trap.}
+\label{fig:chasm}
+\end{figure}
+
+\textit{Branch} har indirekte en relation til \textit{Property}, men da \textit{Property} ikke skal være tilknyttet en \textit{Staff} opstår problemet. For nu kan \textit{Branch} ikke finde 'ned' til \textit{Property}.
+
+På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en relation til \textit{Property} fra \textit{Branch}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figs/spm2/chasm_solved}
+\caption{Chasm trap resolved.}
+\label{fig:chasm_solved}
+\end{figure}
+
 
 % must
 \subsection{De 10 Designregler}
