@@ -14,7 +14,7 @@ a4paper, % papirtype
 \usepackage{lipsum} % bogus tekst
 \usepackage{fancyhdr} % til header og footers
 \usepackage[utf8]{inputenc} % æ ø å
-\usepackage[perpage]{footmisc}	% resets footnote counter on new page
+\usepackage[bottom, perpage]{footmisc}	% resets footnote counter on new page
 %\usepackage{xcolor} % også til kode
 \usepackage[nodayofweek]{datetime}
 \newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
@@ -26,7 +26,7 @@ a4paper, % papirtype
 \usepackage{wrapfig}
 \usepackage[usenames,dvipsnames,table]{xcolor}
 \usepackage{float}
-\usepackage{tikz}
+%\usepackage{tikz}
 \usepackage{color, colortbl} % row colors
 \usepackage[pages=some]{background}
 \usepackage{lastpage}
@@ -40,11 +40,10 @@ a4paper, % papirtype
 	urlcolor={blue!80!black}
 }
 
-%\usepackage[bottom,perpage]{footmisc}%% nulstiller footnote counter på hver side
 \usepackage{todonotes} %% tillader "to-do"-liste vha. \todo{opgave}
 \usepackage{datetime}
-\usepackage{dblfnote} %% footnotes in two colums
-\DFNalwaysdouble %% footnotes in two colums
+%\usepackage{dblfnote} %% footnotes in two colums
+%\DFNalwaysdouble %% footnotes in two colums
 \usepackage{pdfpages} % can fill entire page with fig with: \includepdf{fig.png}
 
 %============================================================%
@@ -53,6 +52,7 @@ a4paper, % papirtype
 
 %=== Til pænere tabeller ====================================%
 \usepackage{booktabs}
+\usepackage{tabu}
 \setlength{\tabcolsep}{10pt}
 \renewcommand{\arraystretch}{1.2}
 
@@ -73,7 +73,7 @@ a4paper, % papirtype
 	backgroundcolor=\color{black!5},
 	basicstyle=\footnotesize,
 	commentstyle=\color{mygreen},
-	%frame=single, 						% laver en ramme om koden
+	frame=single, 						% laver en ramme om koden
 	keepspaces=true, 					% beholde indrykning
 	keywordstyle=\color{blue},
 	numbers=left, 
