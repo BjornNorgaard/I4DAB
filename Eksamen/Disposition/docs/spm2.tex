@@ -27,6 +27,39 @@
 
 % must
 \subsection{Hvorledes omsættes et konceptuelt databasedesign til en konkret database?}
+Som i objektorientering: finder
+betydende klasser i problemdomænet. Analyserer klassernes association, baggrund af disse opstilles en model for den kommende database. Modellen er typisk udført i et Entity Relationship Diagram (ER) eller i et klassediagram (UML).
+
+\begin{enumerate}
+	\item Identificer entiteter og deres attributter.
+	\item Definer relationer mellem entiteterne.
+	\item Anvend De 10 designregler.
+\end{enumerate}
+
+En grund til at lave et velovervejet design er at minimere risikoen for anormaliteter, dvs. fejl eller uregelmæssigheder der opstår i data. Her kan også anvendes normalisering\todo{pageref!}, men det er et andet emne.
+
+\subsubsection{Faldgruber}
+Når designet laves, er der faldgrupper. Det kan f.eks. være en \textbf{fan trap} eller \textbf{chasm trap}. Disse er kendt som \textbf{Connection Traps} 
+
+\paragraph{Fan trap} opstår, når en entitet har \textit{1:M} relation til mindst to entiteter. På figur~\ref{fig:fan} kan man se at et \textit{Site} har flere \textit{Department} og \textit{Staff}. Problemet bliver så: \textit{''which staff work in a particular department?''}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{figs/spm2/fan}
+\caption{Fan Trap.}
+\label{fig:fan}
+\end{figure}
+
+På figur~\ref{fig:fan_solved} vises det hvordan problemet løses ved at ændre ER modellen til at vise den korrekte association.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{figs/spm2/fan_solved}
+\caption{Fan Trap Resolved.}
+\label{fig:fan_solved}
+\end{figure}
+
+\paragraph{Chasm trap} 
 
 % must
 \subsection{De 10 Designregler}
@@ -62,7 +95,7 @@
 	butik, butik behøver ikke eje en video. Ved at sætte fremmednøglen på mange siden får vi at; en
 	butik kan godt oprettes uden en video, men en video skal tilknyttes en butik.
 	
-	\item \textbf{Subject gets targets Primary key as forreing key}\\
+	\item \textbf{Subject gets targets Primary key as foreign key}\\
 	I en 1 til 1 relation skal man identificere subject og target. Target har interesse i subjekt.
 	
 \end{enumerate}
