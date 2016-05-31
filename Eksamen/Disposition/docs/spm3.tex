@@ -33,22 +33,53 @@
 
 Objekter indeholder deres eget \textit{state} og \textit{relation}, samt komplekse værdier. En relationel database dekomponerer objekter ned til sorterede tupler af relationer.
 
-Til arbejdet med OO og RDB, bruges en ORM\footnote{Object-Relation Mappeing}, som oversætter fra en Relation Database til f.eks. C\#.
+Til arbejdet med OO og RDB, bruges en ORM\footnote{Object-Relation Mappeing} (Entity Framework), som oversætter fra en Relation Database til f.eks. C\# og vice versa.
 
 En tabeller indgår rækker (tupler) og kolonner (attributter). 
 Tuplerne definerer forskellige instanser af 'objektet'. Oversættes ét objekt til én tabel, får en \textit{1:1} sammenhæng mellem tabel og objekt.
 
+\subsubsection{Objekt Orientering}
+I OO-programmering tales der om instanser af klasser, som indeholder attributter.
+
+\begin{itemize}
+	\item Klasser er en brugerdefineret type.
+	\item Indkapsling af data - private/public.
+	\item Samarbejde gemmen pointer og referencer.
+	\item Data manipuleres med metoder.
+\end{itemize}
+
+\subsubsection{Relationel Database}
+I Relationelle databaser arbejdes der med entiteter, som indeholder attributter (kolonner).
+
+\begin{itemize}
+	\item Entiteter og relationer.
+	\item Data manipuleres gemmen SQL statements.
+	\item Relationer laves med primær- og fremmednøgler.
+	\item Ingen metoden, kun data.
+\end{itemize}
 
 %% jt råd: hvordan implementeres association i class og relation i db?
 
 %% jt råd: redegør for skafolding structur i EF ( prøv at debugge i projekt )
 
 % must
-\subsection{Ligheder på de to domæner}
+\subsection{Ligheder og forskelle på de to domæner}
 
+\begin{itemize}
+	\item Klasse (som type) == Entity (som tabel). 
+	\item Instans af klasse == Række i tabel.
+	\item Medlemsdata bliver til kolonner/attributter i tabellen.
+	\item Ingen metode i RDB, i stedet bruges \textit{Stored Procedures}, \textit{Functions} og \textit{Triggers}.
+\end{itemize}
 
-% must
-\subsection{Forskelle på de to domæner}
+\subsection{Forskelle ved Arv}\label{sec:arv}
+
+\subsection{Forskelle for Relationer}
+
+\paragraph{1:1}
+\paragraph{1:M}
+\paragraph{M:M}
+
 Id/nøgler i db vs C\#. 
 
 % pas på med brugen af entities. 
