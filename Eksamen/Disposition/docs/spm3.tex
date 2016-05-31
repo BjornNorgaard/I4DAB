@@ -72,25 +72,62 @@ I Relationelle databaser arbejdes der med entiteter, som indeholder attributter 
 	\item Ingen metode i RDB, i stedet bruges \textit{Stored Procedures}, \textit{Functions} og \textit{Triggers}.
 \end{itemize}
 
-\subsection{Forskelle ved Arv}\label{sec:arv}
+\subsubsection{Forskelle ved Arv}\label{sec:arv}
 En klasse i OOP kan sagtens arve fra andre klasser, uden problemer. Der arves adfærd og medlemsdata. Dette kan en RDB ikke helt.
 
-Der bruges super- og subklassen. Superklassen indeholder de 
+Der bruges super- og subklassen. Superklassen indeholder de 'generelle' attributter og subklassen er en specialisering af superklassen.
 
-\subsection{Forskelle for Relationer}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{figs/spm3/arv}
+\caption{Arv i et ERD. }
+\label{fig:arv}
+\end{figure}
+
+Specialisering kan ske \textit{overlapping} og \textit{disjoint}. 
+Figur~\ref{fig:arv} viser \textit{overlapping} med 'o' i cirklen. Dette betyder at en \textit{Employee} \textbf{både} kan være en Ingeniør og en Sekretær.\\
+
+Hvis det havde været et 'd' i stedet, ville specialiseringen være \textit{disjoint}. Dette ville betyde at en \textit{Employee} kan være Ingeniør \textbf{eller} Sekretær, altså ikke begge dele. 
+
+ \todo{Mere om hvad der sker med tabellerne ift. arv}
+
+\subsubsection{Forskelle for Relationer}
 
 \paragraph{1:1}
+
+\begin{itemize}
+	\item \textbf{OO}
+	Brug af pointers/referencer.
+	\item \textbf{DB}
+	Laves med fremmed- og primærnøgle.
+\end{itemize}
+
 \paragraph{1:M}
+
+\begin{itemize}
+	\item \textbf{OO}
+	Array med pointere eller Liste.
+	\item \textbf{DB}
+	'Mange'-siden har FK som er 'en'-sidens PK.
+\end{itemize}
+
 \paragraph{M:M}
 
-Id/nøgler i db vs C\#. 
+\begin{itemize}
+	\item \textbf{OO}
+	Begge klasser indeholder array med pointere eller Liste.
+	\item \textbf{DB}
+	Ny tabel (weak entity) indføres mellem tabellerne. Denne indeholder flere FK som 'peger' tilbage på PK.
+\end{itemize}
 
+%Id/nøgler i db vs C\#. 
+%
 % pas på med brugen af entities. 
-
-entity i EF er noget der mapping in i ''den fysiske verden''.
-
-EF er et ORM, object relation management værktøj.
-
-Hele emnet kan ikke nås til eksamen, så vælg noget og tag det med, jt siger noget om arve-hierarki er godt. Hvor det implementeres med ER, UML og db konstruktion (ID PK/FK | Navn...)
-
-nedarvning i ER har ikke noget med arv at gøre, laves som en specialisering og generalisering.
+%
+%entity i EF er noget der mapping in i ''den fysiske verden''.
+%
+%EF er et ORM, object relation management værktøj.
+%
+%Hele emnet kan ikke nås til eksamen, så vælg noget og tag det med, jt siger noget om arve-hierarki er godt. Hvor det implementeres med ER, UML og db konstruktion (ID PK/FK | Navn...)
+%
+%nedarvning i ER har ikke noget med arv at gøre, laves som en specialisering og generalisering.
