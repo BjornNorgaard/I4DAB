@@ -31,12 +31,13 @@
 % must
 \subsection{Hvordan er sammenhængen mellem Objekt Orientering og Relationsdatabaser?}
 
-En student kan have nogle attributter:
+Objekter indeholder deres eget \textit{state} og \textit{relation}, samt komplekse værdier. En relationel database dekomponerer objekter ned til sorterede tupler af relationer.
 
-\begin{itemize}
-	\item Navn 
-	\item Addresse
-\end{itemize}
+Til arbejdet med OO og RDB, bruges en ORM\footnote{Object-Relation Mappeing}, som oversætter fra en Relation Database til f.eks. C\#.
+
+En tabeller indgår rækker (tupler) og kolonner (attributter). 
+Tuplerne definerer forskellige instanser af 'objektet'. Oversættes ét objekt til én tabel, får en \textit{1:1} sammenhæng mellem tabel og objekt.
+
 
 %% jt råd: hvordan implementeres association i class og relation i db?
 
