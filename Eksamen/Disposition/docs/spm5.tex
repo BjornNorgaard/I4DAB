@@ -55,12 +55,46 @@ I en ikke normaliseret database kan man støde på disse propblemer:
 			\caption{Eksempel på insertion anomaly}
 			\label{fig:insertionAnomaly}
 		\end{figure}
-	\item \textbf{Deletion Anomaly} - Når en tabel indeholder mere end én slags information. Eksemplet med fakultet og kurser, viser hvorledes Dr. Giddens forsvinder hvis man fjerner hans record.
-
-	
+	\item \textbf{Deletion Anomaly} - Når en tabel indeholder mere end én slags information. Eksemplet med fakultet og kurser, viser hvorledes Dr. Giddens forsvinder hvis man fjerner hans record.	
 \end{itemize}
+
+For at undgå disse anomalies bruges Normalformer.
+
 % must
 \subsection{Kom bla. ind på begrebet funktionelle afhængigheder}
+En funktionel afhængighed (FD) er en afhængighed mellem felter i en tabel.
+Et eksempel på en FD kunne være Postnummer og by, hvor postnummer determininerer By, altså har vi \textbf{postnummer $\rightarrow$ by}. På samme måde med Navn og CPR hvor \textbf{CPR $\rightarrow$ Navn}
 
+\textbf{X$\rightarrow$Y}
+\subsubsection{Transistive afhængigheder}
+En afhængighed hvor tre eller flere felter indgår.
+\textbf{X$\rightarrow$Y$\rightarrow$Z}
 % must
 \subsection{Samt redegør kort for normalformerne fra 1 til 4 Normalform (1..4NF)}
+
+\begin{enumerate}
+	\item Normalform - Den mest basale normalform. Ser man på Sales tabellen er denne i 1. Normalform. Det er den fordi følgende gør sig gældende:
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{figs/spm5/notNormalizedTable.PNG}
+			\caption{Sales Tabellen overholder 1NF, da ingen attributter indeholder mere en 1 værdi}
+			\label{fig:notNormalizedTable}
+		\end{figure}
+	\begin{itemize}
+		\item 1NF opfyldes kun hvis hver kolonne i en tabel kun kan have 1 værdi.
+	\end{itemize}
+	Tabeller i 1NF findes der ofte duplikerede data, samt dårlig performance, og Update integritet.
+	
+	\item Normalform - er kun opfyldt hvis følgende gør sig gældende.
+	\begin{itemize}
+		\item 1NF er opfyldt.
+		\item Alle non-key attributter er fuldt ud afhængige af primærnøglen. Enten transistativ afhængig eller direkte.
+	\end{itemize}
+	En tabel hvis primærnøgle er sammensat, skal de felter som kun er afhængige af en del af denne, flyttes over i en tabel for sig, sammen med en kopi af den primærnøgle som de er afhængige af.
+	
+	\item Normalform - er kun opfyldt hvis følgende gør sig gældende.
+	\begin{itemize}
+		\item Transitative afhængigheder fjernes.
+	\end{itemize}
+
+\end{enumerate}
