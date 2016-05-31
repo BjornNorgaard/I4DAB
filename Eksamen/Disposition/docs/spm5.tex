@@ -42,7 +42,23 @@
 
 % must
 \subsection{Hvad er normalisering og hvorfor bruges normalisering?}\label{sec:normal}
+Normalisering er den process der organiserer data i en database. Processen omfatter oprettelse af tabeller og etablering af relationer mellem tabellerne i henhold til et sæt regler, Normalformerne. Normalisering foretages for at minimere data redundancy. Normalisering prøver at opnå isolation af data, således at man kan Delete, Inserte og Update på en enkelt tabel, hvorpå ændringerne propageres gennem resten af databasen vha. fremmednøgler.
 
+I en ikke normaliseret database kan man støde på disse propblemer:
+
+\begin{itemize}
+	\item \textbf{Update Anomaly} - Samme information findes i flere records. Dette kan føre til inconsistancy i forbindelse med Update.
+	\item \textbf{Insertion Anomaly} - Når information ikke kan gemmes. Eksempel på databasen nedenfor hvor Course Code ikke kan være NULL
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{figs/spm5/insertionAnomaly.PNG}
+			\caption{Eksempel på insertion anomaly}
+			\label{fig:insertionAnomaly}
+		\end{figure}
+	\item \textbf{Deletion Anomaly} - Når en tabel indeholder mere end én slags information. Eksemplet med fakultet og kurser, viser hvorledes Dr. Giddens forsvinder hvis man fjerner hans record.
+
+	
+\end{itemize}
 % must
 \subsection{Kom bla. ind på begrebet funktionelle afhængigheder}
 
