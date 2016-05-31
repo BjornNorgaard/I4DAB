@@ -45,7 +45,7 @@ Når et design skal laves er der nogle bestemte fejl, som skal undgås:
 \subsubsection{Faldgruber}
 Når designet laves, er der faldgrupper. Det kan f.eks. være en \textbf{fan trap} eller \textbf{chasm trap}. Disse er kendt som \textbf{Connection Traps} 
 
-\paragraph{Fan trap} opstår, når en entitet har \textit{1:M} relation til mindst to entiteter. Hvilket betyder at ''vejen'' fra \textit{Dept.} til \textit{Staff} bliver tvetydig. 
+\paragraph{Fan trap} opstår, når en entitet (Site) har \textit{1:M}  relation til mindst to entiteter. Hvilket betyder at ''vejen'' fra \textit{Dept.} til \textit{Staff} bliver tvetydig. 
 
 På figur~\ref{fig:fan} kan man se at et \textit{Site} har flere \textit{Department} og \textit{Staff}. Problemet bliver så: \textit{''which staff work in a particular department?''}
 
@@ -114,7 +114,7 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 	
 	\item \textbf{Ternary relationship}
 	\begin{itemize}
-		\item En weak-tabel oprettes med en primær nøgle der er sammensat af de 3 fremmednøgler.\todo{Sammensat? Composite nøgle?}
+		\item En weak-tabel oprettes med en primær nøgle der er sammensat af de 3 fremmednøgler.
 	\end{itemize}
 	
 	\item \textbf{Attribute of an entity}
@@ -122,12 +122,12 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 		\item En attribut af en entitet skal mappes direkte som en attribut i entitetens tabel.
 	\end{itemize}
 	
-	\item \textbf{Generalization super-class (super-type) entity}
+	\item \textbf{Generalization super-class (super-type) entity}\todo{wat is?}
 	\begin{itemize}
 		\item En super entitet mappes direkte til en SQL tabel.
 	\end{itemize}
 	
-	\item \textbf{Generalization sub-class (subtype) entity}
+	\item \textbf{Generalization sub-class (subtype) entity}\todo{wat is?}
 	%En sub entitet mappes til sin egen table for super entiteten. Primær nøglen fra super entiteten	bliver fremmednøgle hos sub entiteten.
 	\begin{itemize}
 		\item Skal mappes direkte til SQL, men med superklassens primærnøgle som en fremmednøgle.
@@ -139,7 +139,7 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 		\item Fremmednøglen i 'mange'-entiteten skal være 'NOT NULL'.
 	\end{itemize}
 		
-	\item \textbf{Subject gets targets Primary key as foreign key}
+	\item \textbf{Subject gets targets Primary key as foreign key}\todo{uddyb}
 	\begin{itemize}
 		\item Bruges ved \textit{1:1} relationer hvis de opstår.
 		\item Identificerer target (den som har interesse i subjekt).
