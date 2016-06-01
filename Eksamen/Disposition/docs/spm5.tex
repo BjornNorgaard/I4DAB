@@ -134,16 +134,13 @@ Er kun opfyldt hvis følgende gør sig gældende.
 \paragraph{NF3,5 - Boyce-Codd normalformen} i de fleste tilfælde er BNCF opfyldt i 3NF. Hvis BNCF ikke opfyldes er følgende gældende:
 	
 \begin{itemize}
-	\item Der er mere end en kandidatnøgle i relationen, og mindst en af dem er en kompositnøgle.
+	\item Der er mere end en kandidatnøgle i relationen, og mindst en af dem er en kompositnøgle.\todo{Woot?}
 \end{itemize}
 	
 \subsubsection{4. Normalform}
-Er next level af Boyce-Codd normalformen (BCNF), også kaldet 3.5NF.
-
-Denne normalform handler ikke om FD'er men derimod om \textit{Multivalued dependancies}.
-Der må ikke være repeterende felter.
+Er next level af Boyce-Codd normalformen (også kaldet 3.5NF). Denne normalform handler ikke om FD'er men derimod om \textbf{Multivalued dependancies}. Der må altså ikke være repeterende felter.\\
 
 Eksempel med tabellen Person(CPR,Uddannelse,Hobby). Hvis samme person har flere hobbyer, X og flere uddanneler, Y vil der altså komme XY tupler for at dække alle muligheder. Løsningen er at dele tabellen op i to: 
 
-\textbf{Person(CPR, Uddannelse) og Fritid(CPR, Hobby)}. Her er der kun brug for X+Y tupler i to tabeller.
+\textbf{Uddannelse(CPR, Uddannelse)} og \textbf{Fritid(CPR, Hobby)}. Her er der kun brug for X+Y tupler i to tabeller.
 
