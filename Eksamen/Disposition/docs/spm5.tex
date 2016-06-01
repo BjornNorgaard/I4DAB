@@ -1,6 +1,7 @@
 \section{Spørgsmål 5}
 
 \subsection{Fokuspunkter}
+
 \begin{itemize}
 	\item Hvad er normalisering og hvorfor bruges normalisering?
 	\item Kom bla. ind på begrebet funktionelle afhængigheder.
@@ -49,14 +50,15 @@ I en ikke normaliseret database kan man støde på disse propblemer:
 \begin{itemize}
 	\item \textbf{Update Anomaly} - Samme information findes i flere records. Dette kan føre til inconsistancy i forbindelse med Update.
 	\item \textbf{Insertion Anomaly} - Når information ikke kan gemmes. Eksempel på databasen nedenfor hvor Course Code ikke kan være NULL
-		\begin{figure}
-			\centering
-			\includegraphics[width=0.7\linewidth]{figs/spm5/insertionAnomaly.PNG}
-			\caption{Eksempel på insertion anomaly}
-			\label{fig:insertionAnomaly}
-		\end{figure}
 	\item \textbf{Deletion Anomaly} - Når en tabel indeholder mere end én slags information. Eksemplet med fakultet og kurser, viser hvorledes Dr. Giddens forsvinder hvis man fjerner hans record.	
 \end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/spm5/insertionAnomaly.PNG}
+	\caption{Eksempel på insertion anomaly}
+	\label{fig:insertionAnomaly}
+\end{figure}
 
 For at undgå disse anomalies bruges Normalformer.
 
@@ -69,12 +71,14 @@ Et eksempel på en FD kunne være Postnummer og by, hvor postnummer determininer
 \subsubsection{Transistive afhængigheder}
 En afhængighed hvor tre eller flere felter indgår.
 \textbf{X$\rightarrow$Y$\rightarrow$Z}
+
+
 % must
 \subsection{Samt redegør kort for normalformerne fra 1 til 4 Normalform (1..4NF)}
 
 \begin{enumerate}
 	\item Normalform - Den mest basale normalform. Ser man på Sales tabellen er denne i 1. Normalform. Det er den fordi følgende gør sig gældende:
-		\begin{figure}
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.7\linewidth]{figs/spm5/notNormalizedTable.PNG}
 			\caption{Sales Tabellen overholder 1NF, da ingen attributter indeholder mere en 1 værdi}
@@ -87,7 +91,7 @@ En afhængighed hvor tre eller flere felter indgår.
 	
 	\item Normalform - er kun opfyldt hvis nedenstående punkter gør sig gældende. Se figur~\ref{fig:not2NF} for en tabel der ikke opfylder 2NF.
 	
-	\begin{figure}
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{figs/spm5/not2NF.PNG}
 		\caption{1NF er opfyldt, ikke 2NF}
@@ -104,7 +108,7 @@ En afhængighed hvor tre eller flere felter indgår.
 	
 	På figur ses tabellen som nu opfylder 2NF. 
 	
-	\begin{figure}
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{figs/spm5/2NF.PNG}
 		\caption{Sales tabellen opfylder nu 2NF}
