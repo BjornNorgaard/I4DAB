@@ -1,6 +1,13 @@
-\subsubsection{Project $\pi$}
+\subsection{Project $\pi$}
 
 \url{https://en.wikipedia.org/wiki/Projection_(relational_algebra)}\\
+
+Denne operator bruges til at lave en \textit{vertical partitionering} og giver os kun de kolonner som vi er interesserede i. 
+
+\begin{lstlisting}[morekeywords={SELECT, FROM, WHERE}]
+// SVARE TIL:
+SELECT attributter FROM tabel;
+\end{lstlisting}
 
 \begin{figure}[h]
 	\centering
@@ -9,8 +16,6 @@
 	\label{fig:project}
 \end{figure}
 
-
-Denne operator bruges til at lave en \textit{vertical partitionering} og giver os kun de kolonner som vi er interesserede i. 
 %Eksempelvis, hvis vi kun er interessede i navn og email for alle i tabellen på side~\pageref{tab:stud}, kan vi skrive følgende med RA:
 %
 %\begin{equation}

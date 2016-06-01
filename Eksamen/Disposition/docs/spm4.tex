@@ -42,6 +42,7 @@ DBMS står for at umuliggøre databaseopdateringer der forårsager key duplicate
 \subsubsection{Primary key}
 Hver record/tuple, har sin egen unikke nøgle - Unik da den kan bruges til at identificere den enkelte record. Disse records kan linkes til andre records i andre tabeller. En primærnøgle kan være en integer, som databasen selv står for at generere.
 
+
 \begin{lstlisting}
 CREATE TABLE [dbo].[Blogs] (
 [BlogId] INT            IDENTITY (1, 1) NOT NULL,
@@ -54,26 +55,29 @@ CONSTRAINT [PK_dbo.Blogs] PRIMARY KEY CLUSTERED ([BlogId] ASC)
 Primær nøgler kan også være brugedefinerede. Fx Name, CPR eller  LicensePlate (kaldet Natural Keys). Der kan være en Primær nøgle i en entitet. Det er denne nøgle der kan migreres til andre entieter, og derved definere et relationship.
 % must
 \subsubsection{Foreign key}
-En fremmed nøgle er en unik nøgle der er migreret\todo{migreret? Hvad med ''peger på''} til en anden entitet.
+En fremmed nøgle er en unik nøgle der er migreret til en anden entitet.
 Det er denne nøgle der bruges til at finde frem til en record i en anden tabel.
 
 % must
 \subsubsection{Super key}
-En eller flere attributter der tilsammen forcerer unikhed på alle records\todo{kolonner?}.
-Kan hver record være unik? hvis ja så har man en super key.\todo{Kan? Forståelse?}
+En eller flere attributter der tilsammen forcerer unikhed på alle records.
+Kan hver record være unik? hvis ja så har man en super key. 
 
-En primærnøgle er en superkey.\todo{korrekt?}
+En primærnøgle er en superkey.
 
 % must
 \subsubsection{Candidate key}
-En kandidatnøgle er en nøgle der kvalificerer sig som unik, dvs. den mindst\todo{mindst mulige?} mulige Superkey. En kandidatnøgle kan bruges som primærnøgle. Eksempel på candidatekeys i et Brugerbaseret system, hvor Email og Username skal være unikke, vil Email og Username begge være kandidat nøgler.\todo{altså en candidate key er en primærnøgle, som ikke blev ''valgt''?}
+En kandidatnøgle er en nøgle der kvalificerer sig som unik, dvs. den mindst mulige Superkey. En kandidatnøgle kan bruges som primærnøgle. Eksempel på candidatekeys i et Brugerbaseret system, hvor Email og Username skal være unikke, vil Email og Username begge være kandidat nøgler. Hvis email gøres til primærnøgle er Username da kanditatnøglen.
 
-\subsubsection{Compound og composite keys}
-En compound key er en nøgle der er sammensat af to eller flere simple nøgler (simple nøgler har kun enkelte attributter\todo{woot? enkle attributter? betyder?}). Det skal være nøgler!\todo{hvad er så ikke en nøgle?}
-En composite key er en nøgle der består af minimum én compound nøgle og mindst en anden attribut eller simpel nøgle. (Den anden attribut behøver ikke være en nøgle!)\todo{fatter hat...}\todo{et eksempel kunne nok være rart}
+\subsubsection{Alternate keys*}
+Kan være primærnøgler. Altså er alternate keys samlingen af de kandidatnøgler der ikke blev valgt til primærnøgler. At definere sine alternate keys kan være en god ide hvis man fx gerne vil indeksere efter Email (hvis email altså er alternate key).
 
-\subsubsection{Natural keys}
+\subsubsection{Compound og composite keys*}
+En compound key er en nøgle der er sammensat af to eller flere simple nøgler (simple nøgler har kun enkelte attributter). Det skal være nøgler (unikke felter)!
+En composite key er en nøgle der består af minimum én compound nøgle og mindst en anden attribut eller simpel nøgle. (Den anden attribut behøver ikke være en nøgle!)
+
+\subsubsection{Natural keys*}
 Naturlige nøgler er når reel data i databasen bruges som nøgler. F.eks. Username eller email. xxx\_id er ikke naturlige nøgler.
 
-\subsubsection{Alternate keys}
-Kan være primærnøgler. Altså er alternate keys samlingen af de kandidatnøgler der ikke blev valgt til primærnøgler\todo{Er candidate nøglerne så også alternate keys?}. At definere sine alternate keys kan være en god ide hvis man fx gerne vil indeksere efter Email (hvis email altså er alternate key)\todo{hvordan defineres dette?}.
+\subsubsection{Secondary Key*}
+Sekundærnøglen kan bruges til at få data ud, men den er ikke unik. Fx vil By-attributten være på flere records.

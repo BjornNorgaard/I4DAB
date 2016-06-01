@@ -1,21 +1,26 @@
-\subsubsection{Kombination af Project $\pi$ og Select $\sigma$}
+\subsection{Kombination af Project og Select}
 
 Disse operatorer kan også anvendes samtidigt og bruges her til at finde navn og email for studerende, som har et gennemsnit over 7 i tabel~\ref{tab:stud}.
 
-\begin{equation}
+\begin{equation*}
 \pi_{navn, email}\sigma_{gennemsnit>7}(Studerende)
-\end{equation}
+\end{equation*}
+
+\begin{lstlisting}[morekeywords={SELECT, FROM, WHERE}]
+// SVARE TIL:
+SELECT attribute FROM table WHERE condition;
+\end{lstlisting}
 
 \begin{table}[H]
-	%\centering
+	\centering
 	\begin{tabular}{lrrl}
 		\toprule
 		\textbf{Navn}	&\textbf{Alder}	&\textbf{Gennemsnit}&\textbf{Email}\\
 		\midrule
-		John Derp		& 24 			& 7,7	& john@derp.me			\\			
-		Hans Hansen		& 45 			& 9,8	& hans@landmand.dk		\\			
-		Brian Jensen	& 22 			& 4,5	& brian@randers.dk		\\			
-		Signe Andersen	& 25 			& 8,6	& signe@hotmail.com		\\
+		John Derp		& 24 			& 8	& john@derp.me			\\			
+		Hans Hansen		& 45 			& 9	& hans@landmand.dk		\\			
+		Brian Jensen	& 22 			& 4	& brian@randers.dk		\\			
+		Signe Andersen	& 25 			& 10	& signe@hotmail.com		\\
 		\bottomrule
 	\end{tabular}
 	\caption{Tabel: Studerende.}
@@ -25,7 +30,7 @@ Disse operatorer kan også anvendes samtidigt og bruges her til at finde navn og
 Dette ville så give os følgende tabel:
 
 \begin{table}[H]
-	%\centering
+	\centering
 	\begin{tabular}{ll}
 		\toprule
 		\textbf{Navn}	& \textbf{Email}	\\
