@@ -111,7 +111,7 @@ Enkelte forklaringer kommer herunder.
 
 \textit{''The view "Current Product List" lists all active products (products that are not discontinued) from the "Products" table. The view is created with the following SQL:''}
 
-\begin{lstlisting}[caption=Kodeeksempel for oprettelse af View,label=code:view,morekeywords={CREATE, VIEW, AS, SELECT, FROM, WHERE}]
+\begin{lstlisting}[caption=Kodeeksempel for oprettelse af View.,label=code:view,morekeywords={CREATE, VIEW, AS, SELECT, FROM, WHERE}]
 // Oprettelse af view
 CREATE VIEW [Current Product List] AS
 SELECT 	ProductID,ProductName
@@ -121,7 +121,7 @@ WHERE 	Discontinued=No
 
 Da vi view'et bruges som vist her: 
 
-\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View,label=code:view]
+\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View.,label=code:view]
 // Anvendelse af view
 SELECT * FROM [Current Product List]
 \end{lstlisting}
@@ -130,7 +130,7 @@ Et andet eksempel:\\
 
 \textit{''Another view in the Northwind sample database selects every product in the "Products" table with a unit price higher than the average unit price:''}
 
-\begin{lstlisting}[caption=Et andet kodeeksempel for anvendelse af View,label=code:view]
+\begin{lstlisting}[caption=Et andet kodeeksempel for anvendelse af View.,label=code:view]
 // Anvendelse af view
 CREATE VIEW [Products Above Average Price] AS
 SELECT 	ProductName,UnitPrice
@@ -138,14 +138,14 @@ FROM 	Products
 WHERE 	UnitPrice>(SELECT AVG(UnitPrice) FROM Products)
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View,label=code:view]
+\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View.,label=code:view]
 // Anvendelse af view
 SELECT * FROM [Products Above Average Price]
 \end{lstlisting}
 
 \paragraph{Opdatering/Ændring af view} syntax for ændring af et view:
 
-\begin{lstlisting}[caption=Opdatering af view]
+\begin{lstlisting}[caption=Opdatering af view.]
 // How to opdate view
 CREATE OR REPLACE VIEW view_name AS
 SELECT 	column_name(s)
@@ -163,7 +163,7 @@ WHERE 	Discontinued=No
 
 \paragraph{Drop/slet view} hvordan kan sletter/dropper et view: 
 
-\begin{lstlisting}[caption=Dropping af view]
+\begin{lstlisting}[caption=Dropping af view.]
 // How to drop a view
 DROP VIEW view_name
 \end{lstlisting}
