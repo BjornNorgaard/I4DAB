@@ -112,9 +112,16 @@ Her følger kodeeksemplet for et view. \\
 \begin{lstlisting}[caption=Kodeeksempel for View,label=code:view,morekeywords={CREATE, VIEW, AS, SELECT, FROM, WHERE}]
 // Oprettelse af view
 CREATE VIEW [Current Product List] AS
-SELECT ProductID,ProductName
-FROM Products
-WHERE Discontinued=No
+SELECT 	ProductID,ProductName
+FROM 	Products
+WHERE 	Discontinued=No
+\end{lstlisting}
+
+Da vi view'et bruges som vist her: 
+
+\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View,label=code:view,morekeywords={CREATE, VIEW, AS, SELECT, FROM, WHERE}]
+// Anvendelse af view
+SELECT * FROM [Current Product List]
 \end{lstlisting}
 
 \textbf{\large KODE EKSEMPLER!}
