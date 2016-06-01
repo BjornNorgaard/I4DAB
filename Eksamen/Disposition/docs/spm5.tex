@@ -43,7 +43,7 @@
 
 % must
 \subsection{Hvad er normalisering og hvorfor bruges normalisering?}\label{sec:normal}
-Normalisering er den process der organiserer data i en database. Processen omfatter oprettelse af tabeller og etablering af relationer mellem tabellerne i henhold til et sæt regler, Normalformerne. Normalisering foretages for at minimere data redundancy. Normalisering prøver at opnå isolation af data, således at man kan Delete, Inserte og Update på en enkelt tabel, hvorpå ændringerne propageres gennem resten af databasen vha. fremmednøgler.
+Normalisering er den process der organiserer data i en database. Processen omfatter oprettelse af tabeller og etablering af relationer mellem tabellerne i henhold til et sæt regler, Normalformerne. Normalisering foretages for at minimere data redundancy. Normalisering prøver at opnå isolation af data, således at man kan Delete, Inserte og Update på en enkelt tabel, hvorpå ændringerne propageres gennem resten af databasen vha. fremmednøgler. Designes en database med normalisering, kaldes dette for Data-Driven Design.
 
 I en ikke normaliseret database kan man støde på disse propblemer:
 
@@ -66,6 +66,8 @@ For at undgå disse anomalies bruges Normalformer.
 \subsection{Kom bla. ind på begrebet funktionelle afhængigheder}
 En funktionel afhængighed (FD) er en afhængighed mellem felter i en tabel.
 Et eksempel på en FD kunne være Postnummer og by, hvor postnummer determininerer By, altså har vi \textbf{postnummer $\rightarrow$ by}. På samme måde med Navn og CPR hvor \textbf{CPR $\rightarrow$ Navn}
+
+\subsubsection{title}
 
 \textbf{X$\rightarrow$Y}
 \subsubsection{Transistive afhængigheder}
