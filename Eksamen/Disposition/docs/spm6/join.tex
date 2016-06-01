@@ -12,6 +12,12 @@ Vi har tabellen vist på figur~\ref{fig:employee_dept} og tilsvarende vises brug
 \label{fig:employee_dept}
 \end{figure}
 
+Gældende notation ses herunder:
+
+\begin{equation*}
+Employee~JOIN_{betingelse} Department
+\end{equation*}
+
 \begin{lstlisting}[caption=SQL for Cross Join,label=code:crossjoin,morekeywords={SELECT, FROM, WHERE, CROSS, JOIN}]
 // Example of an explicit cross join:
 SELECT * FROM employee CROSS JOIN department;
@@ -34,16 +40,21 @@ Som det også kan ses i figur~\ref{fig:cartesian_product} så får hver attribut
 	\label{fig:cartesian_product}
 \end{figure}
 
-\subsection{Natural Join $\Join$}
+\subsubsection{Natural Join $\Join$}
 
 \textit{''The result of the natural join is the set of all combinations of tuples in R and S that are equal on their common attribute names. For an example consider the tables Employee and Dept and their natural join:''}
+
+
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{figs/spm6/naturaljoin}
-\caption{}
+\caption{Natural Join illustreret.}
 \label{fig:naturaljoin}
 \end{figure}
 
+\begin{lstlisting}[caption=SQL for Cross Join,label=code:crossjoin,morekeywords={SELECT, FROM, WHERE, CROSS, JOIN, NATURAL}]
+SELECT * FROM employee NATURAL JOIN department;
+\end{lstlisting}
 
 
