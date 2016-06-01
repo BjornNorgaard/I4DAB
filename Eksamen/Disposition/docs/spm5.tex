@@ -65,10 +65,17 @@ For at undgå disse anomalies bruges Normalformer.
 % must
 \subsection{Kom bla. ind på begrebet funktionelle afhængigheder}
 En funktionel afhængighed (FD) er en afhængighed mellem felter i en tabel.
-Et eksempel på en FD kunne være Postnummer og by, hvor postnummer determininerer By, altså har vi \textbf{postnummer $\rightarrow$ by}. På samme måde med Navn og CPR hvor \textbf{CPR $\rightarrow$ Navn}
 
-\subsubsection{title}
 
+\subsubsection{Trivial FD's}
+
+$\overline{A} \rightarrow \overline{B}$ er en TFD hvis alle B er subsets i A.\\
+Ex. \textbf{stud\_id, Stud\_name $\rightarrow$ stud\_id}
+
+\subsubsection{Non-Trivial FD's}
+$\overline{A} \rightarrow \overline{B}$ er en NTFD hvis kun enkelte af B er subsets i A.
+\subsubsection{Completely Non-Trivial FD's}
+$\overline{A} \rightarrow \overline{B}$ er en CNTFD hvis alle B IKKE er subsets i A
 \textbf{X$\rightarrow$Y}
 \subsubsection{Transistive afhængigheder}
 En afhængighed hvor tre eller flere felter indgår.
