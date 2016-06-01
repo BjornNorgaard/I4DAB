@@ -85,13 +85,79 @@ SQL består af 3 moduler.
 % must
 \subsubsection{Herunder begreberne DML og DDL}
 
+\paragraph{DDL}
+Bruges til at definere opbygning af databasens tabeller, relationer samt typedefinitioner på tabellernes attributter. Når man definerer en database bruges CREATE clausen.
+
+\textbf{CREATE TABLE [table name] ( [column definitions] ) [table parameters]}
+
+\begin{lstlisting}[caption=eksempel på CREATE]
+CREATE TABLE [Blogs] (
+[BlogId] INT            IDENTITY (1, 1) NOT NULL,
+[Name]   NVARCHAR (MAX) NULL,
+[Url]    NVARCHAR (MAX) NULL,
+CONSTRAINT [PK_Blogs] PRIMARY KEY CLUSTERED ([BlogId] ASC)
+);
+\end{lstlisting}
+
+\begin{itemize}
+	\item IDENTITY (1,1) - Gør at DBMS selv imkrementerer Id'et med 1.
+	\item NULL og NOT NULL - Specificerer om det er tilladt for attributten at være NULL.
+	\item CONSTRAINT \textit{table\_name} PRIMARY KEY \textit{attr} - Specificerer at attributten er en primærnøgle.
+\end{itemize}
+
+\textbf{DROP TABLE [table name]}
+
+DROP TABEL sletter en given tabel.
+
 \paragraph{DML}
 DML er en syntaks samling der gør det muligt at manipulere data i en database.
 DML bruges når vi vil arbejde med den data som allerede eksisterer i databasen, herunder lave Queries, Sub-queries, Insertions, Opdateringer, Sletninger og Merges.
 
-
-
-\paragraph{DDL}
+\begin{itemize}
+	\item \textbf{Queries} - Her anvendes SELECT. Se statement~\ref{select}
+	\begin{lstlisting}[caption=Query med sub-query,label=select]
+	SELECT pris, kalorier
+	FROM  Varer
+	WHERE pris < (SELECT AVG(pris) FROM Varer)
+	ORDER BY pris;
+	\end{lstlisting}
+	
+	\item \textbf{Insertions} - Her anvendes INSERT. Se statement~\ref{insert}
+	
+	\begin{lstlisting}[caption=Brug af INSERT,label=insert]
+	INSERT INTO Varer
+	(pris, navn, kalorier)
+	VALUES
+	(10, 'Vand', 0);
+	\end{lstlisting}
+	
+	\item \textbf{Opdateringer} - Her anvendes UPDATE. Se statement~\ref{update}
+	
+	\begin{lstlisting}[caption=Brug af UPDATE,label=update]
+	UPDATE Varer
+	SET pris = 5
+	WHERE navn = 'Vand';
+	\end{lstlisting}
+	
+	\item \textbf{Sletninger} - Her anvendes DELETE. Se statement~\ref{delete}
+	
+	\begin{lstlisting}[caption=brug af DELETE,label=delete]
+	DELETE FROM Varer
+	WHERE Navn = 'Vand';
+	\end{lstlisting}
+	
+	
+	\item \textbf{Merges} - Her anvendes MERGE. Se statement~\ref{merge}
+	
+	\begin{lstlisting}[caption=Brug af MERGE,label=merge]
+	MERGE INTO table_name USING table_reference ON (condition)
+	WHEN MATCHED THEN
+	UPDATE SET column1 = value1 [, column2 = value2 ...]
+	WHEN NOT MATCHED THEN
+	INSERT (column1 [, column2 ...]) VALUES (value1 [, value2 ...])
+	\end{lstlisting}
+\end{itemize}
+\subparagraph{}
 
 % must
 \subsection{Samt strukturen for og mulighederne med de forskellige typer SQL erklæringer}
@@ -101,7 +167,6 @@ DML bruges når vi vil arbejde med den data som allerede eksisterer i databasen,
 \subsubsection{Muligheder med SQL statements}
 
 \begin{itemize}
-	\item Data Definition - CREATE, DROP, ALTER
 	\item Queries og Sub-Queries - SELECT, JOIN
 	\item Data manipulation - INSERT, UPDATE, DELETE og MERGE
 \end{itemize}
