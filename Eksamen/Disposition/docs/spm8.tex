@@ -45,6 +45,17 @@
 
 % must
 \subsection{Hvad er SQL kode afviklet på databasesiden?}
+%Når man kommunikerer med en SQL database, gøres det via nogle specifikke statements, som databasen forstår (CREATE;READ;UPDATE;DELETE). Disse statements bruges til kommunikation, og gemte funktioner/procedure på DB.
+
+SQL	kode gemt på databasen kan være	med	til	at skabe et	fælles interface som	brugere	af databasen kan anvende.
+
+\begin{itemize}
+	\item SQL koden	på databasesiden er	ikke afhængig af platformen	som	tilgår	databasen, eller hvilket sprog den platform	bruger.
+	\item Godt hvis forskellige klienter skal tilgå databasen og udføre de samme operationer.
+	\item Enkapsulerer business logik ét sted.
+	\item SQL kode der er gemt på databasen	har	mulighed for allerede være omsat til	RA og maskinkode.
+	\item Undgår at	sende lange	SQL	data til databasen,	man	kan	blot kalde en	funktion.
+\end{itemize}
 
 % must
 \subsubsection{Hvorledes programmeres/erklæres og bruges Stored Procedure, Function, Trigger og View?}
@@ -53,16 +64,28 @@
 \subsubsection{Stored Procedure}
 % Hvorledes programmeres/erklæres og bruges...
 
+\begin{itemize}
+	\item Er et gemt statement.
+	\item Returnerer et resultatsæt (relation).\todo{Forskel på en relation og en tabel?}
+\end{itemize}
+
 % must
 \subsubsection{Function}
 % Hvorledes programmeres/erklæres og bruges...
 
-% must
-\subsubsection{Trigger}
-% Hvorledes programmeres/erklæres og bruges...
+\begin{itemize}
+	\item Returnerer en værdi (eller en tabel).
+	\item Der findes 3 typer:
+	
+	\begin{itemize}
+		\item \textbf{Scalar} - returnerer en enkelt værdi, med eller uden inddata\todo{Woot is inddata? En fejl?}.
+		\item \textbf{Inline table} - returnerer en tabel med eller uden inddata.
+		\item \textbf{Multi-statement} - returnerer en ny tabel.\todo{Hvad er forskellen på Inline og multi?}
+	\end{itemize}
+\end{itemize}
 
 % must
-\subsubsection{View}
+\subsubsection{Trigger}
 % Hvorledes programmeres/erklæres og bruges...
 
 \begin{itemize}
@@ -70,5 +93,28 @@
 	\item Kan bruges til at logge i en fil. % mindre ting
 	\item En trigger kan kun behandler et sql statement med én value.
 \end{itemize}
+
+% must
+\subsubsection{View}
+% Hvorledes programmeres/erklæres og bruges...
+
+\begin{itemize}
+	\item Er en virtuel tabel, baseret på resultatet af et SQL statement.
+	\item Indeholder rækker og kolonner, som er fra en eller flere tabeller i databasen.
+	\item Kan anvendes med SQL statements (WHERE og JOIN), som om det hele kom fra én tabel.
+	\item Kan være READ-ONLY, eller EDITABLE
+\end{itemize}
+
+Her følger kodeeksemplet for et view. \\
+
+\textit{''The view "Current Product List" lists all active products (products that are not discontinued) from the "Products" table. The view is created with the following SQL:''}
+
+\begin{lstlisting}[caption=Kodeeksempel for View,label=code:view,morekeywords={CREATE, VIEW, AS, SELECT, FROM, WHERE}]
+// Oprettelse af view
+CREATE VIEW [Current Product List] AS
+SELECT ProductID,ProductName
+FROM Products
+WHERE Discontinued=No
+\end{lstlisting}
 
 \textbf{\large KODE EKSEMPLER!}
