@@ -64,11 +64,69 @@ Enkelte forklaringer kommer herunder.
 % must
 \subsubsection{Stored Procedure}
 % Hvorledes programmeres/erklæres og bruges...
+Minder lidt om View, men en Stored Procedure kan tage imod parametre.
 
 \begin{itemize}
 	\item Er et gemt statement.
 	\item Returnerer et resultatsæt (relation).\todo{Forskel på en relation og en tabel?}
 \end{itemize}
+
+\begin{lstlisting}[caption=Kald af Stored Procedure.]
+EXEC spName // no args
+
+EXEC spName 120 // with INT args
+
+EXEC spName 120 'some text' // with INT and STRING args
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure uden parametre.]
+CREATE PROC spName
+AS 
+	SELECT
+		attribute1, 
+		attribute2,
+	FROM
+		table
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure med parametre.]
+CREATE PROC spName (@number AS INT, @name AS VARCHAR(MAX))
+AS 
+	SELECT
+		attribute1,
+		attribute2
+	FROM
+		tableName
+	WHERE
+		attribute1 > @number AND
+		attribute2 LIKE '%' + @name + '%'
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure med 'optionel' parametre.]
+CREATE PROC spName (@number AS INT = 0, @name AS VARCHAR(MAX))
+AS 
+	SELECT
+		attribute1,
+		attribute2
+	FROM
+		tableName
+	WHERE
+		attribute1 > @number AND
+		attribute2 LIKE '%' + @name + '%'
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure med 'optionel' parametre ('Avanceret').]
+CREATE PROC spName (@number AS INT = NULL, @name AS VARCHAR(MAX))
+AS 
+	SELECT
+		attribute1,
+		attribute2
+	FROM
+		tableName
+	WHERE
+		(@number IS NULL OR attribute1 > @number) AND
+		attribute2 LIKE '%' + @name + '%'
+\end{lstlisting}
 
 % must
 \subsubsection{Trigger}
