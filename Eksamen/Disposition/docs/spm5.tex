@@ -126,14 +126,14 @@ F.eks ville \textit{45659885,78856532} ikke overholde reglen.
 %	\label{fig:notNormalizedTable}
 %\end{figure}
 
-Tabeller i 1NF findes der ofte duplikerede data, samt dårlig performance, og Update integritet.\todo{Woot? Forstod intet. Lyder meget overfladisk?}
+I tabeller på 1NF findes der ofte duplikerede data, samt dårlig performance, og dårlig update integritet.
 	
 \subsubsection{2. Normalform}
 Se figur~\ref{fig:not2NF} for en tabel der ikke opfylder 2NF. Er kun opfyldt hvis nedenstående punkter gør sig gældende. 
 	
 \begin{itemize}
 	\item 1NF er opfyldt.
-	\item Alle non-key attributter er fuldt ud afhængige af primærnøglen. Enten transistativ afhængig eller direkte.\todo{Ikke forstået?}
+	\item Alle non-key attributter er fuldt ud afhængige af primærnøglen. Enten transistativ afhængig eller direkte.
 \end{itemize}
 
 \begin{figure}[H]
@@ -143,7 +143,7 @@ Se figur~\ref{fig:not2NF} for en tabel der ikke opfylder 2NF. Er kun opfyldt hvi
 	\label{fig:not2NF}
 \end{figure}
 	
-I en tabel hvis primærnøgle er sammensat\todo{Censor spørger: Kan du pege på den sammensatte primærnøgle?}, skal de felter som kun er afhængige af en del af disse, flyttes over i en tabel for sig, sammen med en kopi af den del af primærnøglen som de er afhængige af.
+I en tabel hvis primærnøgle er sammensat, skal de felter som kun er afhængige af en del af disse, flyttes over i en tabel for sig, sammen med en kopi af den del af primærnøglen som de er afhængige af.
 
 På figur~\ref{fig:2NF} ses tabellen som nu opfylder 2NF. 
 
@@ -168,7 +168,8 @@ Er kun opfyldt hvis følgende gør sig gældende.
 \paragraph{NF3,5 - Boyce-Codd normalformen} i de fleste tilfælde er BNCF opfyldt i 3NF. Hvis BNCF ikke opfyldes er følgende gældende:
 	
 \begin{itemize}
-	\item Der er mere end en kandidatnøgle i relationen, og mindst en af dem er en kompositnøgle.\todo{Woot?}
+	\item Alle determinanter skal være kandidatnøgler.
+	\item Der er mere end en kandidatnøgle i relationen, og mindst en af dem er en kompositnøgle.
 \end{itemize}
 	
 \subsubsection{4. Normalform}
