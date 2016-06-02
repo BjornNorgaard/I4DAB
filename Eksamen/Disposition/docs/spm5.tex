@@ -175,7 +175,7 @@ Er kun opfyldt hvis følgende gør sig gældende.
 \subsubsection{4. Normalform}
 Er next level af Boyce-Codd normalformen (også kaldet 3.5NF). Denne normalform handler ikke om FD'er men derimod om \textbf{Multivalued dependancies}. Der må altså ikke være repeterende felter.\\
 
-Eksempel med tabellen Person(CPR,Uddannelse,Hobby). Hvis samme person har flere hobbyer, X og flere uddanneler, Y vil der altså komme XY tupler for at dække alle muligheder. Løsningen er at dele tabellen op i to: 
+Eksempel med tabellen Person(CPR,Uddannelse,Hobby). Hvis samme person har flere hobbyer, X og flere uddanneler, Y vil der altså komme $X*Y$ tupler for at dække alle muligheder. Løsningen er at dele tabellen op i to: 
 
 \textbf{Uddannelse(CPR, Uddannelse)} og \textbf{Fritid(CPR, Hobby)}. Her er der kun brug for X+Y tupler i to tabeller.
 
