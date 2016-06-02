@@ -57,7 +57,7 @@ Generelt bruges \textit{Three-Level Database Model}. Denne anvendes når et desi
 	Er detaljeret nok til at databasen kan laves udfra denne. Indeholder information om tabeller, kolonner, keys, data-typer, validation rules, database triggers, stored procedures, domains, and access constraints.
 \end{enumerate}
 
-Ud fra dette skema den fysiske database genereres.
+Ud fra dette skema den fysiske database genereres.\todo{hvilket skema?}
 
 % must
 \subsection{Forklar princippet for et Entity Relationsship Diagram (ERD)}
@@ -72,19 +72,20 @@ Et ER-diagram er en data modelleringsteknik som bruges til at gengive forholdet 
 \end{figure}
 
 \subsubsection{Entity}
-An entity exists physically or logically. An entity may be a physical object (house or car), an event (house sale or a car service), or a concept (transaction or order).
+En entitet kan enten være fysisk eller logisk. Den kan være et fysisk objekt  (hus, bil osv), et event (salg, service) eller et koncept (ordre, transaktion).
 
 \subsubsection{Attributter}
-Employee entity might have a Social Security Number (SSN) attribute.
+\todo{mere}
+Attributter minder lidt om medlemsdata i et almindeligt objekt. Employee entiteten kan eks. have en CPR nummer attribut, navne attribut osv.
 
 \subsubsection{Relation}
-A relationship captures how entities are related to one another. Relationships can be thought of as verbs, linking two or more nouns. Examples: a supervises relationship between an employee and a department, a performs relationship between an artist and a song.
+Et Relatioship beskriver hvordan entiteterne er relateret til hinanden. Kan noteres som et udsagnsord, der sammensætter to navne. Eksempel: Employee supervises department osv.
 
-\paragraph{Multiplicity}
+\paragraph{Multiplicity} \todo{figure out}
 Beskriver nedre- og øvre grænse for deltagelse i et relationship. Kan ses på figur~\ref{fig:erd}, som \textit{1} og \textit{M} over stregen.
 
-\paragraph{Kardinalitet}
-Angiver nøjagtigt hvilket antal af en entitet, der er tilladt i en relation. Ses på figur~\ref{fig:erd} som \textit{1:N} og \textit{0:N} under stregen.
+\paragraph{Kardinalitet}\todo{figure out}
+Angiver nøjagtigt hvor hvilket antal af en entitet, der er tilladt i en relation. Ses på figur~\ref{fig:erd} som \textit{1:N} og \textit{0:N} under stregen.
 
 \begin{figure}[h]
 	\centering
@@ -93,7 +94,7 @@ Angiver nøjagtigt hvilket antal af en entitet, der er tilladt i en relation. Se
 	\label{fig:notation}
 \end{figure}
 
-\subsubsection{Keys}
+\subsubsection{Keys}\todo{sæt ind!}
 For mere om nøgler, se side~\pageref{sec:keys}.
 
 \paragraph{Primærnøgle}
@@ -123,7 +124,7 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{figs/spm1/salesProductEntities.png}
-		\caption{}
+		\caption{Entiteter}
 		\label{fig:salesProductEntities}
 	\end{figure}\todo{Caption needed}
 
@@ -157,7 +158,7 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{figs/spm1/salesProductRelation.png}
-		\caption{}
+		\caption{Relation}
 		\label{fig:salesProductRelation}
 	\end{figure}\todo{Caption needed}
 	
