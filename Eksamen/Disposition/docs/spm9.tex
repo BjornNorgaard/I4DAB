@@ -54,6 +54,15 @@ En databasetransaktion er en række operationer der udføres samlet i DBMS. Data
 	\item Den data der tilgås skal også kunne bruges af andre klienter samtidig.
 \end{itemize}
 
+Et eksempel på en Database transaktion kunne være en bank transaktion, hvor der skal overføres penge fra konto A til konto B.
+
+\begin{enumerate}
+	\item A.Account = Account - 100
+	\item B.Account = Account + 100 
+\end{enumerate}
+
+I denne transaktioner det vigigt at pengene både trækkes fra det ene sted og lægges til det andet. Derfor ALT ELLER INTET.
+
 Proceduren for en transaktion:
 
 \begin{itemize}
@@ -71,8 +80,9 @@ ACID egenskaberne betyder at dissee database transaktioner kan udføres stabilt.
 \begin{itemize}
 	\item Atomicity - All or nothing. Hvis en del af transaktionen fejler, fejler hele transaktionen.
 	\item Consistency - Denne egenskab sørger for at databasen går fra et valid state til et andet. Dvs. alle constraints og triggers overholdes - selve transaktionen kan ikke bryde database reglerne.
-	\item Isolation - Denne egenskab sørger for at transaktioner der udføres concurrently, giver samme resultat som dem der udføres serielt.
+	\item Isolation - Denne egenskab sørger for at transaktioner der udføres concurrently, giver samme resultat som dem der udføres serielt. Isolation er \textit{''The main goal for concurrency control''}
 	\item Durability - Egenskab der sikrer at ændringerne på databasen, forbliver når de først er blevet committed.
 \end{itemize}
 % must
 \subsubsection{Betydningen af låse og låsning}
+
