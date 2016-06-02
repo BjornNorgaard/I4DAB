@@ -57,7 +57,15 @@ Generelt bruges \textit{Three-Level Database Model}. Denne anvendes når et desi
 	Er detaljeret nok til at databasen kan laves udfra denne. Indeholder information om tabeller, kolonner, keys, data-typer, validation rules, database triggers, stored procedures, domains, and access constraints.
 \end{enumerate}
 
-Ud fra dette skema den fysiske database genereres.\todo{hvilket skema?}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{figs/spm1/modelTypes.PNG}
+\caption{De 3 typer af Data Models.}
+\label{fig:modelTypes}
+\end{figure}
+
+
+Ud fra dette skema kan den fysiske database genereres.
 
 % must
 \subsection{Forklar princippet for et Entity Relationsship Diagram (ERD)}
@@ -75,16 +83,15 @@ Et ER-diagram er en data modelleringsteknik som bruges til at gengive forholdet 
 En entitet kan enten være fysisk eller logisk. Den kan være et fysisk objekt  (hus, bil osv), et event (salg, service) eller et koncept (ordre, transaktion).
 
 \subsubsection{Attributter}
-\todo{mere}
 Attributter minder lidt om medlemsdata i et almindeligt objekt. Employee entiteten kan eks. have en CPR nummer attribut, navne attribut osv.
 
 \subsubsection{Relation}
 Et Relatioship beskriver hvordan entiteterne er relateret til hinanden. Kan noteres som et udsagnsord, der sammensætter to navne. Eksempel: Employee supervises department osv.
 
-\paragraph{Multiplicity} \todo{figure out}
+\paragraph{Multiplicity/Connectivity}
 Beskriver nedre- og øvre grænse for deltagelse i et relationship. Kan ses på figur~\ref{fig:erd}, som \textit{1} og \textit{M} over stregen.
 
-\paragraph{Kardinalitet}\todo{figure out}
+\paragraph{Kardinalitet}
 Angiver nøjagtigt hvor hvilket antal af en entitet, der er tilladt i en relation. Ses på figur~\ref{fig:erd} som \textit{1:N} og \textit{0:N} under stregen.
 
 \begin{figure}[h]
@@ -94,7 +101,7 @@ Angiver nøjagtigt hvor hvilket antal af en entitet, der er tilladt i en relatio
 	\label{fig:notation}
 \end{figure}
 
-\subsubsection{Keys}\todo{sæt ind!}
+\subsubsection{Keys}
 For mere om nøgler, se side~\pageref{sec:keys}.
 
 \paragraph{Primærnøgle}
@@ -195,12 +202,7 @@ Konstruktion af et ERD sker, som beskrevet af \href{http://db.grussell.org/secti
 	\end{figure}
 	
 	Da både kunde og salgsassistent kan linkes til samme salg af produktet, mistes der ikke data.
-
-
-		
 \end{enumerate}
-
-\todo{find godt eksempel}
 
 
 
