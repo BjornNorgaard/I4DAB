@@ -166,7 +166,9 @@ GO
 % Hvorledes programmeres/erklæres og bruges...
 
 \begin{itemize}
-	\item Returnerer en værdi (eller en tabel).
+	\item Kan bruges i SELECT statements.
+	\item Kan \textbf{ikke} ændre i databasen.
+	\item Har afhængigt af db systemet indbyggede funktioner: Count, Min, Max, Sum, etc.
 	\item Der findes 3 typer:
 	
 	\begin{itemize}
@@ -175,6 +177,60 @@ GO
 		\item \textbf{Multi-statement} - returnerer en ny tabel.\todo{Hvad er forskellen på Inline og multi?}
 	\end{itemize}
 \end{itemize}
+
+\paragraph{Scalar function} returnere én værdi.
+
+\begin{lstlisting}[caption=Generisk eksempel på scaler function.]
+// Oprettelse af function
+CREATE FUNCTION functionName(@arg argType)
+RETURNS returnType
+AS
+BEGIN
+	RETURN @arg + 3	
+END
+
+// Anvendelse i query
+SELECT Name, functionName(arg)
+FROM table
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Konkret eksempel på scaler function.]
+// Oprettelse af function
+CREATE FUNCTION dbo.CelsiusToFahrenheit(@Celsius FLOAT)
+RETURNS FLOAT
+AS
+BEGIN
+	RETURN (@Celsius * 1.8) + 32	
+END
+
+// Anvendelse i query
+SELECT Name, CelsiusToFahrenheit(BoilingPoint)
+FROM Element
+\end{lstlisting}
+
+\paragraph{Inline table} returnerer en table.
+
+\begin{lstlisting}[caption=Generisk eksempel på inline table.]
+CREATE FUNCTION funcName(@argName argType)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT attribute1, attribute2
+	FROM table
+	WHERE attribute1 = @argName
+)
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Konkret eksempel på inline table.]
+CREATE FUNCTION StudentInArea(@Postnummer NVARCHAR(4))
+RETURNS TABLE
+AS
+RETURN (
+	SELECT Fornavn, Efternavn
+	FROM Students
+	WHERE Postnummer = @Postnummer
+)
+\end{lstlisting}
 
 % must
 \subsubsection{View}
