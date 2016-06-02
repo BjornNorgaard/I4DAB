@@ -57,7 +57,7 @@ Generelt bruges \textit{Three-Level Database Model}. Denne anvendes når et desi
 	Er detaljeret nok til at databasen kan laves udfra denne. Indeholder information om tabeller, kolonner, keys, data-typer, validation rules, database triggers, stored procedures, domains, and access constraints.
 \end{enumerate}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{figs/spm1/modelTypes.PNG}
 \caption{De 3 typer af Data Models.}
@@ -105,14 +105,14 @@ Angiver nøjagtigt hvor hvilket antal af en entitet, der er tilladt i en relatio
 For mere om nøgler, se side~\pageref{sec:keys}.
 
 \paragraph{Primærnøgle}
-A primary key uniquely identifies each row/record in a database table. Primary keys \textbf{must} contain unique values. A primary key cannot be NULL.
+En primær nøgle kan unikt identificere hver række/record i en database tabel. PK'er \textbf{skal} indeholde værider og kan derfor ikke være NULL.
 
-A table can have only one primary key, which may consist of single or multiple fields. When multiple fields are used as a primary key, they are called a composite key.
+En tabel kan kun have 1 primær nøgle, som kan bestå af enkelte eller flere felter. Når der bruges flere felter kaldes nøglen en composite key.
 
 \paragraph{Sekundærnøgle}
-Foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table. 
+En Fremmednøgle er en attribut eller samling af attributter i en tabel, der unikt identificerer en række i en anden tabel.
 
-In simpler words, the foreign key is defined in a second table, but it refers to the primary key in the first table.
+Sagt simpelt, er Fremmednøglen defineret i en anden tabel, men den referere til primærnøglen i den første tabel.
 
 % must
 \subsection{Hvorledes opstilles et ER Diagram?}
