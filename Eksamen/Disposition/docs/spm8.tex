@@ -134,9 +134,16 @@ AS
 % must
 \subsubsection{Trigger}
 % Hvorledes programmeres/erklæres og bruges...
-En trigger er et database objekt som er tilknyttet en tabel.
+En trigger er et database objekt som er tilknyttet en tabel.\\
 
-\todo{mere om tidspunkt for brug}
+En Trigger kan 'fires' ved følgende ''events'':
+
+\begin{itemize}
+	\item \textbf{BEFORE} X
+	\item \textbf{AFTER} X
+	\item \textbf{INSTEAD OF} X\\
+	X bliver ikke udført, i stedet bliver \textit{vores} definition af denne trigger kaldt. Denne kan så gøre noget andet eller udføre kaldet.
+\end{itemize}
 
 \begin{itemize}
 	\item Bliver automatisk eksekveret når et bestemt event finder sted (CRUD\footnote{Create Read Update Delete} events).
