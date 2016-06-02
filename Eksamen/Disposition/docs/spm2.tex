@@ -133,6 +133,19 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 		\item Skal mappes direkte til SQL, men med superklassens primærnøgle som en fremmednøgle.
 	\end{itemize}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{figs/spm3/arv}
+		\caption{Arv i et ERD. }
+		\label{fig:arv1}
+	\end{figure}
+	
+	Specialisering kan ske \textit{overlapping} og \textit{disjoint}. 
+	Figur~\ref{fig:arv1} viser \textit{overlapping} med 'o' i cirklen. Dette betyder at en \textit{Employee} \textbf{både} kan være en Ingeniør og en Sekretær.\\
+	
+	Hvis det havde været et 'd' i stedet, ville specialiseringen være \textit{disjoint}. Dette ville betyde at en \textit{Employee} kan være Ingeniør \textbf{eller} Sekretær, altså ikke begge dele. 
+	
+	
 	\item \textbf{Mandatory constraint on the 'one' side of a \textit{1:M relationship}}
 	\begin{itemize}
 		\item 'En'-entiteten af et \textit{1:M} relation skal altid være mandatory.
