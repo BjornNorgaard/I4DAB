@@ -47,7 +47,23 @@
 
 % must
 \subsection{Hvad er Databasetransaktioner i en relationel database?}
+En databasetransaktion er en række operationer der udføres samlet i DBMS. Database transaktioner bruges til at samle flere mindre opgaver og udføre dem atomic, consistent, isolated og durable (ACID). En database transaktion skal:
 
+\begin{itemize}
+	\item Ske uden at forstyyre andre transaktioner (må ikke interferere)
+	\item Den data der tilgås skal også kunne bruges af andre klienter samtidig.
+\end{itemize}
+
+Proceduren for en transaktion:
+
+\begin{itemize}
+	\item Start transaktionen med \textbf{BEGIN}.
+	\item Manipuler data manipulationer og/eller queries.
+	\item Hvis ingen errors: Afslut/Gem transaktionen med \textbf{COMMIT}.
+	\item Hvis errors: Slet transaktion ved fejl med \textbf{ROLLBACK}.
+\end{itemize}
+
+En transaktion giver derved mulighed for at sikre at alle operationer er fuldført uden fejl, før der gemmes på databasen. Ved en fejl vil databasen være i samme tilstand som i starten.
 % must
 \subsubsection{Kom herunder ind på ACID egenskaber}
 
