@@ -71,6 +71,36 @@ Enkelte forklaringer kommer herunder.
 \end{itemize}
 
 % must
+\subsubsection{Trigger}
+% Hvorledes programmeres/erklæres og bruges...
+En trigger er et database objekt som er tilknyttet en tabel.
+
+\begin{itemize}
+	\item Bliver automatisk eksekveret når et bestemt event finder sted (CRUD events).
+	\item Kan ikke udføres af brugeren, men er reaktioner på events i databasen.
+	\item Kan gennemtvinge sikkerhedstjek før en operation går igennem
+	\item Kan bruges til at logge i en fil.
+	\item Bruger to underliggende tabeller: \textbf{inserted} og \textbf{deleted}:
+	
+	\begin{itemize}
+		\item \textbf{inserted}\\
+		The inserted table contains the data referenced in an INSERT before it is actually committed to the database.
+		\item \textbf{deleted}\\
+		The deleted table contains the data in the underlying table referenced in a DELETE before it is actually removed from the database.
+	\end{itemize}
+\end{itemize}
+
+Kan eksempelvis bruges til at lave en backup hver gang en record slettes. Eller, hvis en Person indsættes, bliver der automatisk oprettet et Passport.
+
+\begin{lstlisting}[caption=Kodeeksempel for Trigger]
+CREATE TRIGGER triggerName ON tabel
+AFTER INSERT
+AS
+	-- DO STUFF HERE
+GO
+\end{lstlisting}
+
+% must
 \subsubsection{Function}
 % Hvorledes programmeres/erklæres og bruges...
 
@@ -83,16 +113,6 @@ Enkelte forklaringer kommer herunder.
 		\item \textbf{Inline table} - returnerer en tabel med eller uden inddata.
 		\item \textbf{Multi-statement} - returnerer en ny tabel.\todo{Hvad er forskellen på Inline og multi?}
 	\end{itemize}
-\end{itemize}
-
-% must
-\subsubsection{Trigger}
-% Hvorledes programmeres/erklæres og bruges...
-
-\begin{itemize}
-	\item Minder om C\# events.
-	\item Kan bruges til at logge i en fil. % mindre ting
-	\item En trigger kan kun behandler et sql statement med én value.
 \end{itemize}
 
 % must
