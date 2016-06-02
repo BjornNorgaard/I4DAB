@@ -65,17 +65,110 @@ Enkelte forklaringer kommer herunder.
 \subsubsection{Stored Procedure}
 % Hvorledes programmeres/erklæres og bruges...
 
+\url{https://www.youtube.com/watch?v=fjNsRV4zLdc}
+
+Minder lidt om View, men en Stored Procedure kan tage imod parametre.
+
 \begin{itemize}
 	\item Er et gemt statement.
 	\item Returnerer et resultatsæt (relation).\todo{Forskel på en relation og en tabel?}
 \end{itemize}
+
+\begin{lstlisting}[caption=Kald af Stored Procedure.]
+EXEC spName // no args
+
+EXEC spName 120 // with INT args
+
+EXEC spName 120 'some text' // with INT and STRING args
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure uden parametre.]
+CREATE PROC spName
+AS 
+	SELECT
+		attribute1, 
+		attribute2,
+	FROM
+		table
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure med parametre.]
+CREATE PROC spName (@number AS INT, @name AS VARCHAR(MAX))
+AS 
+	SELECT
+		attribute1,
+		attribute2
+	FROM
+		tableName
+	WHERE
+		attribute1 > @number AND
+		attribute2 LIKE '%' + @name + '%'
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure med 'optionel' parametre.]
+CREATE PROC spName (@number AS INT = 0, @name AS VARCHAR(MAX))
+AS 
+	SELECT
+		attribute1,
+		attribute2
+	FROM
+		tableName
+	WHERE
+		attribute1 > @number AND
+		attribute2 LIKE '%' + @name + '%'
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Eksempel på Stored Procedure med 'optionel' parametre ('Avanceret').]
+CREATE PROC spName (@number AS INT = NULL, @name AS VARCHAR(MAX))
+AS 
+	SELECT
+		attribute1,
+		attribute2
+	FROM
+		tableName
+	WHERE
+		(@number IS NULL OR attribute1 > @number) AND
+		attribute2 LIKE '%' + @name + '%'
+\end{lstlisting}
+
+% must
+\subsubsection{Trigger}
+% Hvorledes programmeres/erklæres og bruges...
+En trigger er et database objekt som er tilknyttet en tabel.
+
+\begin{itemize}
+	\item Bliver automatisk eksekveret når et bestemt event finder sted (CRUD events).
+	\item Kan ikke udføres af brugeren, men er reaktioner på events i databasen.
+	\item Kan gennemtvinge sikkerhedstjek før en operation går igennem
+	\item Kan bruges til at logge i en fil.
+%	\item Bruger to underliggende tabeller: \textbf{inserted} og \textbf{deleted}:
+%	
+%	\begin{itemize}
+%		\item \textbf{inserted}\\
+%		The inserted table contains the data referenced in an INSERT before it is actually committed to the database.
+%		\item \textbf{deleted}\\
+%		The deleted table contains the data in the underlying table referenced in a DELETE before it is actually removed from the database.
+%	\end{itemize}
+\end{itemize}
+
+Kan eksempelvis bruges til at lave en backup hver gang en record slettes. Eller, hvis en Person indsættes, bliver der automatisk oprettet et Passport.
+
+\begin{lstlisting}[caption=Kodeeksempel for Trigger]
+CREATE TRIGGER triggerName ON tabel
+AFTER INSERT
+AS
+	-- DO STUFF HERE
+GO
+\end{lstlisting}
 
 % must
 \subsubsection{Function}
 % Hvorledes programmeres/erklæres og bruges...
 
 \begin{itemize}
-	\item Returnerer en værdi (eller en tabel).
+	\item Kan bruges i SELECT statements.
+	\item Kan \textbf{ikke} ændre i databasen.
+	\item Har afhængigt af db systemet indbyggede funktioner: Count, Min, Max, Sum, etc.
 	\item Der findes 3 typer:
 	
 	\begin{itemize}
@@ -85,15 +178,59 @@ Enkelte forklaringer kommer herunder.
 	\end{itemize}
 \end{itemize}
 
-% must
-\subsubsection{Trigger}
-% Hvorledes programmeres/erklæres og bruges...
+\paragraph{Scalar function} returnere én værdi.
 
-\begin{itemize}
-	\item Minder om C\# events.
-	\item Kan bruges til at logge i en fil. % mindre ting
-	\item En trigger kan kun behandler et sql statement med én value.
-\end{itemize}
+\begin{lstlisting}[caption=Generisk eksempel på scaler function.]
+// Oprettelse af function
+CREATE FUNCTION functionName(@arg argType)
+RETURNS returnType
+AS
+BEGIN
+	RETURN @arg + 3	
+END
+
+// Anvendelse i query
+SELECT Name, functionName(arg)
+FROM table
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Konkret eksempel på scaler function.]
+// Oprettelse af function
+CREATE FUNCTION dbo.CelsiusToFahrenheit(@Celsius FLOAT)
+RETURNS FLOAT
+AS
+BEGIN
+	RETURN (@Celsius * 1.8) + 32	
+END
+
+// Anvendelse i query
+SELECT Name, CelsiusToFahrenheit(BoilingPoint)
+FROM Element
+\end{lstlisting}
+
+\paragraph{Inline table} returnerer en table.
+
+\begin{lstlisting}[caption=Generisk eksempel på inline table.]
+CREATE FUNCTION funcName(@argName argType)
+RETURNS TABLE
+AS
+RETURN (
+	SELECT attribute1, attribute2
+	FROM table
+	WHERE attribute1 = @argName
+)
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Konkret eksempel på inline table.]
+CREATE FUNCTION StudentInArea(@Postnummer NVARCHAR(4))
+RETURNS TABLE
+AS
+RETURN (
+	SELECT Fornavn, Efternavn
+	FROM Students
+	WHERE Postnummer = @Postnummer
+)
+\end{lstlisting}
 
 % must
 \subsubsection{View}
@@ -111,7 +248,7 @@ Enkelte forklaringer kommer herunder.
 
 \textit{''The view "Current Product List" lists all active products (products that are not discontinued) from the "Products" table. The view is created with the following SQL:''}
 
-\begin{lstlisting}[caption=Kodeeksempel for oprettelse af View,label=code:view,morekeywords={CREATE, VIEW, AS, SELECT, FROM, WHERE}]
+\begin{lstlisting}[caption=Kodeeksempel for oprettelse af View.,label=code:view,morekeywords={CREATE, VIEW, AS, SELECT, FROM, WHERE}]
 // Oprettelse af view
 CREATE VIEW [Current Product List] AS
 SELECT 	ProductID,ProductName
@@ -121,7 +258,7 @@ WHERE 	Discontinued=No
 
 Da vi view'et bruges som vist her: 
 
-\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View,label=code:view]
+\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View.,label=code:view]
 // Anvendelse af view
 SELECT * FROM [Current Product List]
 \end{lstlisting}
@@ -130,7 +267,7 @@ Et andet eksempel:\\
 
 \textit{''Another view in the Northwind sample database selects every product in the "Products" table with a unit price higher than the average unit price:''}
 
-\begin{lstlisting}[caption=Et andet kodeeksempel for anvendelse af View,label=code:view]
+\begin{lstlisting}[caption=Et andet kodeeksempel for anvendelse af View.,label=code:view]
 // Anvendelse af view
 CREATE VIEW [Products Above Average Price] AS
 SELECT 	ProductName,UnitPrice
@@ -138,14 +275,14 @@ FROM 	Products
 WHERE 	UnitPrice>(SELECT AVG(UnitPrice) FROM Products)
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View,label=code:view]
+\begin{lstlisting}[caption=Kodeeksempel for anvendelse af View.,label=code:view]
 // Anvendelse af view
 SELECT * FROM [Products Above Average Price]
 \end{lstlisting}
 
 \paragraph{Opdatering/Ændring af view} syntax for ændring af et view:
 
-\begin{lstlisting}[caption=Opdatering af view]
+\begin{lstlisting}[caption=Opdatering af view.]
 // How to opdate view
 CREATE OR REPLACE VIEW view_name AS
 SELECT 	column_name(s)
@@ -163,7 +300,7 @@ WHERE 	Discontinued=No
 
 \paragraph{Drop/slet view} hvordan kan sletter/dropper et view: 
 
-\begin{lstlisting}[caption=Dropping af view]
+\begin{lstlisting}[caption=Dropping af view.]
 // How to drop a view
 DROP VIEW view_name
 \end{lstlisting}
