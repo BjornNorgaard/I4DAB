@@ -152,12 +152,12 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 		\item Fremmednøglen i 'mange'-entiteten skal være 'NOT NULL'.
 	\end{itemize}
 		
-	\item \textbf{Subject gets targets Primary key as foreign key}\todo{uddyb}
+	\item \textbf{Ved 1:1 - Subject gets targets Primary key as foreign key}
 	\begin{itemize}
 		\item Bruges ved \textit{1:1} relationer hvis de opstår.
 		\item Identificerer target (den som har interesse i subjekt).
 		\item Subjekt får targets primærnøgle som fremmednøgle.
-		\item Hvis en af entiteterne er mandatory skal den have primærnøglen.
+		\item Hvis en af entiteterne er mandatory skal den have en kopi af andens primærnøgle.
 	\end{itemize}
 	
 \end{enumerate}
@@ -184,7 +184,7 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 	Set fra platforms vinkel. Hvordan bruger OS data og hvordan mappes det til hardware.
 \end{itemize}
 
-\paragraph{Om skema} et skema er det DDL\footnote{Database Definition Language}, der beskriver strukturen i databasen. Denne består af:
+\paragraph{Om skema} et skema er det blueprint, der beskriver strukturen i databasen. Denne består af:
 
 \begin{itemize}
 	\item Tabeller i databasen.
@@ -200,33 +200,5 @@ På figur~\ref{fig:chasm_solved} ses løsningen, hvor der simpelthen er lavet en
 	\item \textbf{Entity integrity}\\
 	Alle rækker skal være unikke (primærnøgler anvendes for at opnå dette).
 	\item \textbf{Referantiel integrity}\\
-	Alle fremmednøgler skal pege på et elemenet i en anden tabel, eller være \textit{null}.
+	Alle fremmednøgler skal pege på et elemenet i en anden tabel, eller være \textit{nullable}.
 \end{itemize}
-
-\todo{Muligvis noget mere om 3-delt syn på information? Måske noget om Ekstern skema, Intern og Logisk? Stort måske...}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
