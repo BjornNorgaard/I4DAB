@@ -50,7 +50,7 @@
 En databasetransaktion er en række operationer der udføres samlet i DBMS. Database transaktioner bruges til at samle flere mindre opgaver og udføre dem atomic, consistent, isolated og durable (ACID). En database transaktion skal:
 
 \begin{itemize}
-	\item Ske uden at forstyyre andre transaktioner (må ikke interferere)
+	\item Ske uden at forstyrre andre transaktioner (må ikke interferere)
 	\item Den data der tilgås skal også kunne bruges af andre klienter samtidig.
 \end{itemize}
 
@@ -85,4 +85,25 @@ ACID egenskaberne betyder at dissee database transaktioner kan udføres stabilt.
 \end{itemize}
 % must
 \subsubsection{Betydningen af låse og låsning}
+
+For at opnå \textit{serialization} kan der benyttes låse på data ressourcerne. Hvis en transaktion vil læse, tager den en læse-lås, hvis den vil skrive, skal den bruge en eksklusiv skrive-lås.
+
+\paragraph{Deadlock}
+Opstår ved at to transaktioner venter på at den anden afgiver den lås den skal bruge.
+Hvis en deadlock opstår, vil DBMS tvinge den nyeste transaktion til at rollbacke sit arbejde.
+
+\paragraph{2-Phase locking 2PL}
+2PL protokollen garanterer serialization.
+
+Der findes to typer låse:
+
+\begin{enumerate}
+	\item Shared locks - writelocks.
+	
+	Når en transaktion vil tilgå et data objekt tager den en lås. Hvis en anden transaktion ønsker at tilgå samme data, checkes det om låsetypen tillader concurrent access. Hvis ikke blokeres den anden transaktion. Først når den første transaktion frigiver låsen, kan den anden transaktion tage låsen.
+	
+	\item Exclusive locks - readlocks.
+\end{enumerate}
+
+
 
